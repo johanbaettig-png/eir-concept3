@@ -1,0 +1,2598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Eir — Eir Insurance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --orange: #d86b32;
+  --sage: #5C7A5E;
+  --forest: #2E3D2F;
+  --dark: #0A1410;
+  --ink: #1C1C1C;
+  --bg: #F6F4EF;
+  --muted: rgba(255,255,255,0.55);
+  --border-light: rgba(28,28,28,0.08);
+  --water-img: url('images/img-001-01707d299fc0.jpg');
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  background: var(--dark);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: transparent;
+  backdrop-filter: none;
+  transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), background 0.3s;
+}
+nav.nav-hidden { transform: translateY(-100%); }
+nav.nav-scrolled { background: rgba(14,26,18,0.92); backdrop-filter: blur(12px); }
+.nav-logo img { height: 26px; filter: brightness(0) invert(1); }
+.nav-links {
+  display: flex;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: #fff; }
+.nav-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.35);
+  padding: 0.55em 1.4em;
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.nav-cta:hover { border-color: var(--orange); color: var(--orange); }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: rgba(255,255,255,0.7);
+  transition: 0.3s;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  z-index: 0;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #0A1410;
+  overflow: hidden;
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: -80%;
+  background: conic-gradient(from 0deg at 38% 55%,#162614 0deg,#2E4D2A 40deg,#5C7A5E 85deg,#3A5C3A 125deg,#0A1410 175deg,#1A2E1A 215deg,#E8631A 250deg,#2A3A28 280deg,#4A6E48 318deg,#162614 360deg);
+  filter: blur(52px);
+  animation: heroCW 32s linear infinite;
+  opacity: .72;
+  will-change: transform;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: -80%;
+  background: conic-gradient(from 180deg at 62% 40%,#0A1410 0deg,#E8631A 28deg,#2E3D2F 70deg,#4A6E4A 115deg,#0A1410 165deg,#5C7A5E 205deg,#1A2A1A 252deg,#3A5030 298deg,#0A1410 360deg);
+  filter: blur(68px);
+  animation: heroCCW 24s linear infinite;
+  opacity: .55;
+  will-change: transform;
+}
+@keyframes heroCW  { from{transform:rotate(0deg)}   to{transform:rotate(360deg)} }
+@keyframes heroCCW { from{transform:rotate(0deg)}   to{transform:rotate(-360deg)} }
+
+.hero-eyebrow {
+  position: absolute;
+  top: calc(66px + 1.4rem);
+  left: clamp(1.25rem, 5vw, 3rem);
+  z-index: 2;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.54rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--orange);
+  flex-shrink: 0;
+}
+.hero-body {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: clamp(6rem,12vw,10rem);
+  padding-bottom: clamp(4rem,8vh,7rem);
+  padding-left: clamp(1.25rem,5vw,3rem);
+  padding-right: clamp(1.25rem,5vw,3rem);
+}
+.hero-h1 {
+  font-weight: 300;
+  font-size: clamp(3.8rem, 8.5vw, 8.5rem);
+  line-height: 0.94;
+  letter-spacing: 0.01em;
+  color: #fff;
+  margin-bottom: 2rem;
+  margin-left: 0;
+  max-width: 14ch;
+}
+.hero-h1 .dim { color: rgba(255,255,255,0.38); }
+.hero-sub {
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+  line-height: 1.6;
+  color: rgba(255,255,255,0.65);
+  max-width: 36ch;
+  margin-bottom: 3.5rem;
+}
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.btn-primary {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.54rem;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  padding: 0.85em 2.2em;
+  border-radius: 2rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--forest); }
+.btn-primary .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  flex-shrink: 0;
+}
+.btn-secondary {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.54rem;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 0.85em 2.2em;
+  border-radius: 2rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+.hero-scroll {
+  position: absolute;
+  bottom: 5.5rem;
+  left: clamp(1.25rem, 5vw, 3rem);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  animation: scrollPulse 4s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1.0; }
+}
+.hero-scroll::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+}
+
+/* ── MARQUEE ── */
+.marquee-section {
+  position: relative;
+  overflow: hidden;
+  padding: 0.8rem 0;
+  background: transparent;
+  z-index: 2;
+  width: 100%;
+  margin-top: -3.2rem;
+}
+.marquee-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg,
+      rgba(44,62,34,0.72) 0%,
+      rgba(10,20,16,0.82) 40%,
+      rgba(28,48,32,0.75) 70%,
+      rgba(10,20,16,0.85) 100%);
+  mix-blend-mode: multiply;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+.marquee-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(8,14,10,0.28);
+  z-index: 1;
+}
+.marquee-inner {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+
+
+.marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marqueeScroll 114s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+@keyframes marqueeScroll {
+  from { transform: translate3d(0,0,0); }
+  to   { transform: translate3d(-50%,0,0); }
+}
+.marquee-item {
+  padding: 0 2.2rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.42);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.marquee-item.bold { font-weight: 500; color: rgba(255,255,255,0.65); }
+.marquee-logo {
+  height: 28px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  display: block;
+  opacity: 0.92;
+  filter: brightness(1.2) contrast(1.05);
+  transition: opacity 0.2s;
+  /* All logos same height — no individual resize */
+}
+.marquee-item:hover .marquee-logo { opacity: 0.85; }
+.marquee-cat {
+  padding: 0 2.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.54rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--orange);
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+/* ── STATS ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  position: relative;
+  overflow: hidden;
+  background: #F0F2EC;
+}
+.stat {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.5rem,4.5vw,4.5rem) clamp(1.5rem,3vw,3rem);
+  background: transparent;
+  border: none;
+}
+.stat-conic {
+  position: absolute;
+  inset: -120%;
+  filter: blur(55px);
+  opacity: 0.13;
+  pointer-events: none;
+  background: conic-gradient(from 0deg at 38% 55%,
+    #162614 0deg, #2E4D2A 40deg, #5C7A5E 85deg,
+    #3A5C3A 125deg, #0A1410 175deg, #1A2E1A 215deg,
+    #d86b32 250deg, #2A3A28 280deg, #4A6E48 318deg, #162614 360deg);
+  animation: gsAnim1 18s linear infinite;
+}
+.stat:nth-child(2) .stat-conic {
+  background: conic-gradient(from 180deg at 62% 40%,
+    #0A1410 0deg, #d86b32 28deg, #2E3D2F 70deg,
+    #4A6E4A 115deg, #0A1410 165deg, #5C7A5E 205deg,
+    #1A2A1A 252deg, #3A5030 295deg, #d86b32 335deg, #0A1410 360deg);
+  animation: gsAnim1 22s linear infinite reverse;
+}
+.stat:nth-child(3) .stat-conic {
+  background: conic-gradient(from 90deg at 50% 50%,
+    #162614 0deg, #5C7A5E 60deg, #2E4D2A 120deg,
+    #d86b32 200deg, #0A1410 260deg, #2E4D2A 320deg, #162614 360deg);
+  animation: gsAnim1 15s linear infinite;
+  animation-delay: -7s;
+}
+@keyframes gsAnim1 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes statTextGradient1 {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+@keyframes statTextGradient2 {
+  0%   { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes statTextGradient3 {
+  0%   { background-position: 50% 0%; }
+  100% { background-position: 50% 100%; }
+}
+.stat-num {
+  font-weight: 300;
+  font-size: clamp(4.24rem, 9.54vw, 8.48rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.035em;
+  overflow: visible;
+  margin-bottom: 0.8rem;
+  position: relative;
+  background-image: conic-gradient(from 0deg at 38% 55%,
+    #162614 0deg, #2E4D2A 40deg, #5C7A5E 85deg,
+    #3A5C3A 125deg, #0A1410 175deg, #1A2E1A 215deg,
+    #d86b32 250deg, #2A3A28 280deg, #4A6E48 318deg, #162614 360deg);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: statTextGradient1 18s ease-in-out infinite alternate;
+}
+.stat:nth-child(2) .stat-num {
+  background-image: conic-gradient(from 180deg at 62% 40%,
+    #0A1410 0deg, #d86b32 28deg, #2E3D2F 70deg,
+    #4A6E4A 115deg, #0A1410 165deg, #5C7A5E 205deg,
+    #1A2A1A 252deg, #3A5030 295deg, #d86b32 335deg, #0A1410 360deg);
+  background-size: 300% 300%;
+  animation: statTextGradient2 22s ease-in-out infinite alternate;
+}
+.stat:nth-child(3) .stat-num {
+  background-image: conic-gradient(from 90deg at 50% 50%,
+    #162614 0deg, #5C7A5E 60deg, #2E4D2A 120deg,
+    #d86b32 200deg, #0A1410 260deg, #2E4D2A 320deg, #162614 360deg);
+  background-size: 300% 300%;
+  animation: statTextGradient3 20s ease-in-out infinite alternate;
+}
+.stat-num sup {
+  display: inline-block;
+  font-size: 0.30em;
+  line-height: 1;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  position: relative;
+  transform: translateY(0.03em);
+  vertical-align: baseline;
+  background: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  opacity: 1;
+  visibility: visible;
+}
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(28,28,28,0.45);
+}
+
+
+
+/* ── SECTIONS SHARED ── */
+section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
+/* Hero overrides global section padding, hero-body handles its own spacing */
+.hero { padding: 0; }
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 1px;
+  background: var(--sage);
+  flex-shrink: 0;
+}
+.section-h2 {
+  font-weight: 300;
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  line-height: 1.06;
+  letter-spacing: 0.005em;
+  margin-bottom: 1.2rem;
+}
+.section-sub {
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.65;
+  opacity: 0.65;
+  max-width: 46ch;
+  margin-bottom: 3rem;
+}
+
+/* ── OFFER ── */
+.offer-section { background: var(--dark); color: #fff; padding: 0 !important; }
+.offer-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* Same treatment as old still image */
+  filter: saturate(0.45) brightness(0.55) sepia(0.25);
+  z-index: 0;
+}
+.offer-header {
+  position: relative;
+  z-index: 2;
+  padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem) 3rem;
+  max-width: 52ch;
+}
+
+/* Full-bleed photo + offer cards */
+.offer-photo-wrap {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.offer-photo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Colour cast overlay — same as the old image filter */
+  background: rgba(46,61,47,0.18);
+  mix-blend-mode: multiply;
+}
+/* Gradient overlays: dark at top/bottom edges, keep mid-photo visible */
+.offer-photo-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(10,20,16,0.55) 0%,
+      rgba(10,20,16,0.35) 30%,
+      rgba(10,20,16,0.35) 70%,
+      rgba(10,20,16,0.65) 100%);
+  z-index: 1;
+}
+
+.offer-cards-visual {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  /* vertical dividers via box-shadow on each card */
+}
+.offer-card-v {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(16px);
+  transition: transform 0.65s 0.05s cubic-bezier(0.16,1,0.3,1);
+  padding: clamp(2.5rem,5vw,4rem) clamp(1.25rem,2.5vw,2.5rem) clamp(2.5rem,5vw,4rem);
+  border-right: 1px solid rgba(255,255,255,0.13);
+  transition: background 0.3s;
+}
+/* First card aligns with global left margin */
+.offer-card-v:first-child {
+  padding-left: clamp(1.25rem,5vw,3rem);
+}
+.offer-card-v:last-child { border-right: none; }
+.offer-card-v:hover { background: rgba(255,255,255,0.05); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1); }
+
+.offer-card-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 2.8rem;
+  color: #fff;
+  opacity: 0.92;
+  flex-shrink: 0;
+}
+.offer-card-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.44rem;
+  letter-spacing: 0.22em;
+  color: var(--orange);
+  display: block;
+  margin-bottom: 1rem;
+}
+.offer-card-v h3 {
+  font-weight: 300;
+  font-size: clamp(1rem,1.4vw,1.25rem);
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  line-height: 1.15;
+}
+.offer-card-v p {
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.55);
+  flex: 1;
+}
+/* Bottom accent line on hover */
+.offer-card-v::after {
+  content: '';
+  display: block;
+  margin-top: 2rem;
+  height: 1px;
+  background: linear-gradient(to right, var(--orange), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.offer-card-v:hover::after { opacity: 1; }
+
+/* offer sub-row (body text below cards) */
+.offer-sub-row {
+  position: relative;
+  z-index: 2;
+  padding: 2.5rem clamp(1.25rem,5vw,3rem) clamp(3rem,6vw,5rem);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.offer-sub-text {
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  line-height: 1.65;
+  color: rgba(255,255,255,0.55);
+  max-width: 52ch;
+}
+
+
+
+/* Products dark */
+.products-dark {
+  background:
+    linear-gradient(to bottom,
+      transparent 0%,
+      transparent 70%,
+      rgba(8,14,10,0.25) 100%
+    ),
+    var(--sage);
+  padding: clamp(3rem,5vw,5rem) clamp(1.25rem,5vw,3rem) clamp(1.5rem,2.5vw,2rem);
+}
+.products-eyebrow::before { background: var(--orange); }
+
+.products-dark-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
+  background: transparent;
+}
+.product-dark-tile {
+  background: rgba(8,16,10,0.62);
+  padding: 2.2rem 1.8rem 2.4rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: border-color 0.2s, background 0.2s;
+}
+.product-dark-tile:hover {
+  border-color: rgba(255,255,255,0.16);
+  background: rgba(8,16,10,0.75);
+}
+.product-dark-tile svg {
+  width: 58px;
+  height: 58px;
+  color: var(--sage);
+  margin-bottom: 1.8rem;
+  display: block;
+  opacity: 0.9;
+}
+.product-dark-tile h3 {
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.product-dark-tile p {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ── HOW WE WORK — scroll storytelling ── */
+
+.how-pin-spacer {
+  height: 175vh;
+  position: relative;
+}
+
+.how-section {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Background layer — zooms 100→106%, darkens on entry */
+.how-bg {
+  position: absolute;
+  inset: -8%;
+  background-image: url('images/img-002-1b126a2bd921.jpg');
+  background-size: cover;
+  background-position: center;
+  transform: scale(var(--hw-scale, 1)) translateY(var(--hw-parallax, 0%));
+  transform-origin: center center;
+  will-change: transform;
+  transition: filter 0.05s linear;
+  filter: brightness(var(--hw-bright, 0.6)) contrast(var(--hw-contrast, 1.05));
+}
+
+/* Scrim */
+.how-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(8,14,10, var(--hw-scrim, 0.55)) 0%,
+    rgba(8,14,10, 0.32) 100%);
+  pointer-events: none;
+}
+
+/* Content */
+.how-inner {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 6vw, 7rem);
+  max-width: 1000px;
+}
+
+/* Header */
+.how-header { margin-bottom: 2.8rem; }
+
+.how-eyebrow-hw {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(18px);
+  margin-bottom: 0.75rem;
+}
+.how-inner .eyebrow::before { background: var(--orange); }
+.how-headline-hw {
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(18px);
+}
+.how-sub-hw {
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(16px);
+  max-width: 44ch;
+  margin-top: 0.9rem;
+  color: rgba(255,255,255,0.5);
+}
+
+/* Steps */
+.how-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.how-step-item {
+  padding: 1.15rem 0;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  opacity: 0;
+  transform: translateY(12px);
+  /* transitions set by JS inline for scroll-scrub */
+}
+
+.how-step-inner {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.4rem;
+  align-items: start;
+}
+
+.how-step-line-wrap {
+  padding-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 4rem;
+}
+
+.how-step-num-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--orange);
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.how-step-line {
+  height: 1px;
+  width: 0;
+  background: var(--orange);
+  max-width: 2rem;
+  transition: width 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.how-step-item[data-step="0"] .how-step-line {
+  display: none;
+}
+
+.how-step-content {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.how-step-content h3 {
+  font-weight: 400;
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  margin-bottom: 0.22rem;
+  color: rgba(255,255,255,0.92);
+}
+
+.how-step-content p {
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.45);
+  max-width: 38ch;
+}
+
+/* Step states */
+.hw-step-visible .how-step-num-lbl { opacity: 1; }
+.hw-step-visible .how-step-line { width: 2rem; opacity: 0.45; }
+.hw-step-active .how-step-line { width: 2rem; opacity: 0.45; }
+.hw-step-done .how-step-line { width: 2rem; opacity: 0.45; }
+.hw-step-visible .how-step-content,
+.hw-step-active .how-step-content,
+.hw-step-done .how-step-content { opacity: 1; transform: translateX(0); }
+
+.hw-step-secondary {
+  opacity: 0.62 !important;
+  filter: blur(0px) !important;
+  transform: translateY(0) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+.hw-step-active {
+  opacity: 1 !important;
+  filter: blur(0px) !important;
+  transform: translateY(0) !important;
+  border-color: rgba(255,255,255,0.22) !important;
+}
+
+.hw-step-done {
+  opacity: 1 !important;
+  filter: blur(0px) !important;
+  transform: translateY(0) !important;
+  border-color: rgba(255,255,255,0.15) !important;
+}
+
+
+/* ── PARTNERS ── */
+.partners-section { background: var(--bg); color: var(--ink); }
+.partners-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 3rem;
+  align-items: end;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1px;
+  background: var(--border-light);
+  margin-bottom: 1px;
+}
+.logo-cell {
+  background: #fff;
+  padding: 1.4rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 70px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: rgba(28,28,28,0.45);
+  transition: color 0.2s;
+}
+.logo-cell:hover { color: var(--ink); }
+
+
+/* Testimonials */
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  background: var(--border-light);
+  margin-top: 4rem;
+}
+.testimonial {
+  background: #fff;
+  padding: 2.4rem 2rem;
+}
+.testimonial-quote {
+  font-size: 2.5rem;
+  color: var(--sage);
+  line-height: 1;
+  margin-bottom: 1rem;
+  font-family: Georgia, serif;
+}
+.testimonial p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+.testimonial-author {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #5A5A5A;
+}
+.testimonial-author strong { display: block; color: var(--ink); font-weight: 500; }
+
+/* ── MAP ── */
+.map-section {
+  background: var(--forest);
+  color: #fff;
+  padding: 0;
+  position: relative;
+  overflow: visible; /* allow section to grow downward */
+}
+/* The map bg is fixed height, anchored top */
+.map-section-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: clamp(580px, 44vw, 760px);
+  overflow: hidden;
+  pointer-events: none;
+}
+.map-text-col {
+  position: relative;
+  z-index: 2;
+  width: 44%;
+  padding: clamp(4rem,7vw,7rem) clamp(1.25rem,5vw,3rem);
+  padding-bottom: clamp(4rem,7vw,7rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: clamp(580px, 44vw, 760px);
+}
+/* Right col: absolute within the bg, always covers right 62% at map height */
+.map-visual-col {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: clamp(580px, 44vw, 760px);
+  width: 62%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.map-img-wrap {
+  position: absolute;
+  inset: 0;
+}
+.map-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right top;
+  display: block;
+}
+.map-dots-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.market-lists { display:flex; gap:3rem; flex-wrap:wrap; margin-bottom:2rem; }
+.market-group h4 { font-family:'DM Mono',monospace; font-size:0.46rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange); margin-bottom:0.7rem; }
+.market-group ul { list-style:none; display:flex; flex-direction:column; gap:0.28rem; }
+.market-group li { font-size:0.82rem; color:rgba(255,255,255,0.65); line-height:1.4; }
+.map-legend { display:flex; gap:2rem; margin-bottom:2rem; padding:0; border:none; }
+.legend-item { display:flex; align-items:center; gap:0.6rem; font-family:'DM Mono',monospace; font-size:0.46rem; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.45); }
+.legend-dot { width:9px; height:9px; border-radius:50%; }
+.legend-dot.live { background:var(--orange); }
+.legend-dot.cross { background:var(--sage); opacity:0.8; }
+.map-eco-btn { background:none; border:none; cursor:pointer; font-family:'DM Mono',monospace; font-size:0.48rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.38); padding:0; display:flex; align-items:center; gap:0.6rem; transition:color 0.2s; }
+@keyframes arrowDrift {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(3px); }
+}
+@keyframes ecoColorPulse {
+  0%, 100% { color: rgba(255,255,255,0.38); }
+  50%       { color: rgba(255,255,255,0.82); }
+}
+#ecosystemArrow { animation: arrowDrift 2.8s ease-in-out infinite; display:inline-block; }
+.map-eco-btn { animation: ecoColorPulse 2s ease-in-out infinite !important; }
+.map-eco-btn #ecosystemArrow { animation: arrowDrift 2.8s ease-in-out infinite, ecoColorPulse 2s ease-in-out infinite; }
+.map-eco-btn:hover { color:rgba(255,255,255,0.72); }
+.eco-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.8rem 2.5rem; }
+.eco-cat { font-family:'DM Mono',monospace; font-size:0.4rem; letter-spacing:0.24em; text-transform:uppercase; color:rgba(255,255,255,0.22); margin-bottom:0.6rem; padding-bottom:0.4rem; border-bottom:1px solid rgba(255,255,255,0.06); }
+.eco-names { display:flex; flex-direction:column; gap:0.28rem; }
+.eco-names span { font-size:0.78rem; color:rgba(255,255,255,0.42); cursor:default; transition:color 0.15s; }
+.eco-names span:hover { color:rgba(255,255,255,0.78); }
+.map-dot { opacity:0; transform-box:fill-box; transform-origin:center; transform:scale(0); transition:opacity 0.45s ease,transform 0.45s cubic-bezier(0.34,1.56,0.64,1); }
+.map-dot-live { fill:#d86b32; filter:drop-shadow(0 0 4px rgba(216,107,50,0.55)); }
+.map-dot-cross { fill:#5C7A5E; filter:drop-shadow(0 0 3px rgba(92,122,94,0.45)); }
+.map-section.dots-visible .map-dot { opacity:1; transform:scale(1); }
+
+/* Map marker ambient pulse — independent, very subtle */
+@keyframes markerPulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(0.80); }
+  100% { transform: scale(1); }
+}
+/* Glow pulse for live dots */
+@keyframes markerGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(216,107,50,0.50)); }
+  50%       { filter: drop-shadow(0 0 9px rgba(216,107,50,0.78)); }
+}
+@keyframes markerGlowCross {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(92,122,94,0.42)); }
+  50%       { filter: drop-shadow(0 0 8px rgba(92,122,94,0.70)); }
+}
+.map-section.dots-visible .map-dot-live {
+  animation: markerPulse 4s ease-in-out infinite, markerGlow 4s ease-in-out infinite;
+}
+.map-section.dots-visible .map-dot-cross {
+  animation: markerPulse 4s ease-in-out infinite, markerGlowCross 4s ease-in-out infinite;
+}
+.map-section.dots-hidden .map-dot { opacity:0; transform:scale(0); }
+@media(max-width:768px) {
+  .map-text-col { width:100%; min-height:auto; }
+  .map-visual-col { position:relative; width:100%; height:320px; top:auto; right:auto; }
+  .market-lists { gap:2rem; }
+}
+
+/* ── PRESS ── */
+.press-section { background: var(--bg); color: var(--ink); padding: clamp(3rem,5vw,5rem) clamp(1.25rem,5vw,3rem) !important; }
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1px;
+  background: var(--border-light);
+  margin-bottom: 2rem;
+}
+.press-card {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+  text-decoration: none;
+  color: inherit;
+}
+.press-card:hover { box-shadow: 0 4px 24px rgba(28,28,28,0.08); }
+.press-card-visual {
+  position: relative;
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  background: transparent;
+  flex-shrink: 0;
+  order: -1;
+}
+.press-card-visual svg,
+.press-card-visual img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.press-card:hover .press-card-visual svg,
+.press-card:hover .press-card-visual img { transform: scale(1.03); }
+.press-card-text {
+  padding: 1.2rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+.press-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.44rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.7rem;
+  display: block;
+}
+.press-card h3 {
+  font-weight: 400;
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--ink);
+  flex: 1;
+  margin-bottom: 1.2rem;
+}
+.press-card-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.44rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sage);
+  transition: color 0.2s;
+}
+.press-card:hover .press-card-cta { color: var(--ink); }
+
+@media (max-width: 768px) {
+  .press-grid { grid-template-columns: 1fr; }
+}
+
+/* ── ABOUT ── */
+.about-section {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  padding: 0;
+}
+.about-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('images/img-037-7b3281d559ad.jpg');
+  background-size: cover;
+  background-position: center 60%;
+  filter: saturate(0.4) brightness(0.5) sepia(0.2);
+  z-index: 0;
+}
+.about-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(10,20,16,0.82) 0%,
+    rgba(10,20,16,0.65) 50%,
+    rgba(10,20,16,0.2) 100%
+  );
+  z-index: 1;
+}
+.about-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 62ch;
+  padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem);
+}
+.about-facts {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  width: fit-content;
+}
+.about-fact {
+  padding: 1.2rem 2rem 1.2rem 0;
+  margin-right: 2rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.about-fact--btn {
+  border-right: none;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  margin-right: 0;
+}
+.about-fact:last-child { border-right: none; }
+.about-fact-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.46rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 0.3rem;
+}
+.about-fact-value { font-weight: 300; font-size: 0.95rem; color: #fff; }
+
+/* ── CTA ── */
+.cta-section {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: clamp(8rem,14vw,14rem) clamp(1.25rem,5vw,3rem);
+  background: #0A1410;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: -80%;
+  background: conic-gradient(from 0deg at 38% 55%,#162614 0deg,#2E4D2A 40deg,#5C7A5E 85deg,#3A5C3A 125deg,#0A1410 175deg,#1A2E1A 215deg,#E8631A 250deg,#2A3A28 280deg,#4A6E48 318deg,#162614 360deg);
+  filter: blur(52px);
+  animation: heroCW 32s linear infinite;
+  opacity: 0.72;
+  will-change: transform;
+  z-index: 0;
+  pointer-events: none;
+}
+.cta-section::after {
+  content: '';
+  position: absolute;
+  inset: -80%;
+  background: conic-gradient(from 180deg at 62% 40%,#0A1410 0deg,#E8631A 28deg,#2E3D2F 70deg,#4A6E4A 115deg,#0A1410 165deg,#5C7A5E 205deg,#1A2A1A 252deg,#3A5030 298deg,#0A1410 360deg);
+  filter: blur(68px);
+  animation: heroCCW 24s linear infinite;
+  opacity: 0.6;
+  will-change: transform;
+  z-index: 0;
+  pointer-events: none;
+}
+.cta-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10,20,16,0.5);
+}
+.cta-inner {
+  position: relative;
+  z-index: 1;
+}
+.cta-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 1.5rem;
+}
+.cta-h2 {
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  color: #fff;
+  max-width: 14ch;
+  margin: 0 auto 2.5rem;
+}
+.cta-h2 span { color: var(--orange); }
+
+/* ── FOOTER ── */
+footer {
+  background: #0f1913;
+  padding: clamp(3rem,6vw,5rem) clamp(1.25rem,5vw,3rem) 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+  overflow: hidden;
+}
+/* Subtle atmospheric glow left side */
+footer::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 55%;
+  height: 140%;
+  background: radial-gradient(ellipse at 30% 40%, rgba(92,122,94,0.07) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+.footer-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: clamp(2rem,4vw,4rem);
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.footer-logo {
+  height: 20px;
+  filter: brightness(0) saturate(100%) invert(42%) sepia(85%) saturate(500%) hue-rotate(353deg) brightness(95%) contrast(98%);
+  margin-bottom: 1.2rem;
+}
+.footer-tagline {
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.72);
+  max-width: 28ch;
+  margin-bottom: 0.8rem;
+}
+.footer-tagline-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.44rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 1.6rem;
+  line-height: 1.6;
+}
+.footer-col h4 {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.42rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.22);
+  margin-bottom: 1.2rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+.footer-col a {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.48);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: rgba(255,255,255,0.85); }
+.footer-contact-item { margin-bottom: 1.3rem; }
+.footer-contact-item .label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.4rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.22);
+  margin-bottom: 0.3rem;
+}
+.footer-contact-item a {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.58);
+  text-decoration: none;
+  transition: color 0.2s;
+  display: block;
+}
+.footer-contact-item a:hover { color: var(--orange); }
+.footer-bottom {
+  position: relative;
+  z-index: 1;
+  padding: 1.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+}
+.footer-legal {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.footer-legal a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.42rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  text-decoration: none;
+  transition: color 0.2s;
+  padding: 0 0.9rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.footer-legal a:first-child { padding-left: 0; }
+.footer-legal a:last-child { border-right: none; }
+.footer-legal a:hover { color: rgba(255,255,255,0.6); }
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.42rem;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.18);
+}
+
+/* ── MOBILE MENU (hidden by default) ── */
+.mobile-menu { display: none; }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+
+  /* Nav */
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+
+  /* Fullscreen mobile menu, hidden on desktop */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #060d09;
+    z-index: 200;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 2rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .mobile-menu-links a {
+    font-weight: 300;
+    font-size: clamp(2.2rem, 9vw, 3.5rem);
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    display: block;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    transition: color 0.2s;
+  }
+  .mobile-menu-links a:hover { color: var(--orange); }
+  .mobile-menu-cta {
+    margin-top: 2.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .mobile-menu-close {
+    position: absolute;
+    top: 1.4rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  .mobile-menu-footer {
+    margin-top: auto;
+    padding-top: 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.46rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* Hero */
+  .hero-body {
+    max-width: 100%;
+    padding: 8rem 1.5rem 5rem 1.5rem !important;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+  .hero-h1 {
+    font-size: clamp(2.8rem, 11vw, 4rem);
+    margin-left: 0;
+    margin-bottom: 1.4rem;
+    text-align: left;
+    word-break: break-word;
+  }
+  .hero-sub {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 2.5rem;
+    margin-left: 0;
+    max-width: 100%;
+    white-space: normal;
+  }
+  .hero-eyebrow {
+    font-size: 0.5rem;
+    top: calc(66px + 1.2rem);
+    left: 1.5rem;
+  }
+  .hero-btns {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .btn-primary, .btn-secondary:not(.about-btn) {
+    font-size: 0.6rem;
+    padding: 1em 1.8em;
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-scroll { left: 1.5rem; font-size: 0.44rem; }
+
+  /* Stats */
+  .stats { grid-template-columns: 1fr; }
+  .stat {
+    border-right: none;
+    border-bottom: 1px solid rgba(28,28,28,0.06);
+    padding: 3rem 1.5rem;
+  }
+  .stat:last-child { border-bottom: none; }
+  .stat-num { font-size: clamp(5.3rem, 21.2vw, 7.42rem); }
+  .stat-label { font-size: 0.6rem; letter-spacing: 0.2em; margin-top: 0.6rem; }
+
+  /* Sections */
+  section { padding: 3.5rem 1.5rem; }
+  .eyebrow { font-size: 0.55rem; margin-bottom: 1rem; }
+  .section-h2 { font-size: clamp(1.8rem, 7vw, 2.4rem); margin-bottom: 1rem; }
+  .section-sub { font-size: 0.95rem; line-height: 1.65; }
+
+  /* Offer */
+  .offer-cards-visual { grid-template-columns: 1fr 1fr; }
+  .offer-card-v { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .offer-card-v:last-child { border-bottom: none; }
+  .products-dark-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .product-tile p { font-size: 0.82rem; }
+
+  /* How */
+
+  /* Partners */
+  .partners-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+  .logo-grid { grid-template-columns: repeat(3,1fr); }
+  .logo-cell { font-size: 0.58rem; padding: 1rem 0.8rem; min-height: 60px; }
+  .testimonials { grid-template-columns: 1fr; }
+  .testimonial { padding: 2rem 1.5rem; }
+  .testimonial p { font-size: 0.92rem; line-height: 1.7; }
+
+  /* Map */
+  .map-intro { grid-template-columns: 1fr; gap: 2rem; }
+  .market-lists { gap: 2rem; }
+  .market-group h4 { font-size: 0.52rem; }
+  .market-group li { font-size: 0.88rem; }
+  .map-legend { padding: 1.2rem 1.5rem; gap: 1.2rem; }
+  .legend-item { font-size: 0.52rem; }
+
+  /* Press */
+  .press-grid { grid-template-columns: 1fr; }
+  .press-item { padding: 1.8rem 1.5rem; }
+  .press-item h3 { font-size: 0.96rem; line-height: 1.45; }
+
+  /* About */
+  .about-facts { flex-direction: column; gap: 0; margin-top: 2rem; }
+  .about-fact {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 1.2rem 0;
+    margin: 0;
+  }
+  .about-fact:last-child { border-bottom: none; }
+  .about-fact-label { font-size: 0.5rem; }
+  .about-fact-value { font-size: 1rem; }
+
+  /* CTA */
+  .cta-h2 { font-size: clamp(2rem, 9vw, 3rem); }
+  .btn-primary[style*="margin:0 auto"] { width: 100%; justify-content: center; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-tagline { font-size: 0.88rem; max-width: none; }
+  .footer-col h4 { font-size: 0.5rem; }
+  .footer-col a { font-size: 0.9rem; }
+  .footer-contact-item .label { font-size: 0.48rem; }
+  .footer-contact-item a { font-size: 0.86rem; }
+  .footer-bottom { flex-direction: column; gap: 1.2rem; padding: 1.8rem 0; }
+  .footer-legal { flex-wrap: wrap; gap: 0.8rem 1.2rem; }
+  .footer-legal a { font-size: 0.48rem; }
+  .footer-copy { font-size: 0.46rem; }
+}
+
+@media (max-width: 480px) {
+  .logo-grid { grid-template-columns: repeat(2,1fr); }
+  .products-grid { grid-template-columns: 1fr; }
+  .market-lists { flex-direction: column; gap: 1.5rem; }
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL ANIMATIONS
+═══════════════════════════════════════════ */
+
+
+
+/* OFFER section — all elements start hidden */
+.offer-eyebrow-wrap,
+.offer-headline-wrap {
+  overflow: hidden;
+}
+.offer-eyebrow-anim {
+  transform: translateY(14px);
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.offer-headline-anim {
+  transform: translateY(18px);
+  transition: transform 0.65s cubic-bezier(0.16,1,0.3,1);
+}
+.offer-card-v {
+  transform: translateY(16px);
+  transition: transform 0.65s 0.18s cubic-bezier(0.16,1,0.3,1);
+}
+.offer-sub-text-anim {
+  transform: translateY(12px);
+  transition: transform 0.55s 0.15s cubic-bezier(0.16,1,0.3,1);
+}
+.offer-cta-anim {
+  transform: translateY(10px);
+  transition: transform 0.5s 0.15s cubic-bezier(0.16,1,0.3,1);
+}
+
+/* Visible states — clear blur, settle to position */
+.offer-eyebrow-anim.anim-in  { opacity: 1; filter: blur(0); transform: translateY(0); }
+.offer-headline-anim.anim-in { opacity: 1; filter: blur(0); transform: translateY(0); }
+.offer-card-v.anim-in        { opacity: 1; filter: blur(0); transform: translateY(0); }
+.offer-sub-text-anim.anim-in { opacity: 1; filter: blur(0); transform: translateY(0); }
+.offer-cta-anim.anim-in      { opacity: 1; filter: blur(0); transform: translateY(0); }
+
+/* Guide line draw animation */
+.offer-cards-visual::before {
+  transform-origin: top center;
+  transform: scaleY(0);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.offer-cards-visual.guides-in::before {
+  transform: scaleY(1);
+}
+
+
+/* ═══════════════════════════════════════
+   SECTION 05 — PRODUCTS 3D scroll animation
+═══════════════════════════════════════ */
+
+/* perspective wrapper on the grid */
+.products-dark-grid {
+  perspective: 1200px;
+}
+
+/* eyebrow starts hidden */
+.products-eyebrow-anim {
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(10px);
+  transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1),
+              filter 0.4s cubic-bezier(0.16,1,0.3,1),
+              transform 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.products-eyebrow-anim.anim-in {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* each card: initial 3D resting state */
+.product-dark-tile {
+  opacity: 0;
+  filter: blur(4px);
+  transform: rotateY(-8deg) rotateX(4deg) translateY(40px);
+  transform-origin: center bottom;
+  transform-style: preserve-3d;
+  will-change: opacity, filter, transform;
+  transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1),
+              filter 0.5s cubic-bezier(0.16,1,0.3,1),
+              transform 0.6s 0.05s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.2s,
+              background 0.2s;
+}
+
+/* landed state */
+.product-dark-tile.anim-in {
+  opacity: 1;
+  filter: blur(0);
+  transform: rotateY(0deg) rotateX(0deg) translateY(0px);
+}
+
+/* CTA below products */
+.products-cta-anim {
+  opacity: 0;
+  filter: blur(3px);
+  transform: translateY(12px);
+  transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1),
+              filter 0.4s cubic-bezier(0.16,1,0.3,1),
+              transform 0.5s cubic-bezier(0.16,1,0.3,1);
+}
+.products-cta-anim.anim-in {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   GLOBAL ANIMATION SYSTEM
+   Sequence: opacity 0→1, blur 6px→0, translateY 14px→0
+   Then: element's specific animation.
+═══════════════════════════════════════════════════════ */
+
+/* Universal reveal — added by IntersectionObserver */
+.g-reveal {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateY(14px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+              filter 0.6s cubic-bezier(0.16,1,0.3,1),
+              transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  will-change: opacity, filter, transform;
+}
+.g-reveal.g-visible {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0);
+}
+
+/* Stagger delays for groups */
+.g-reveal[data-delay="1"] { transition-delay: 0.08s; }
+.g-reveal[data-delay="2"] { transition-delay: 0.16s; }
+.g-reveal[data-delay="3"] { transition-delay: 0.24s; }
+.g-reveal[data-delay="4"] { transition-delay: 0.32s; }
+.g-reveal[data-delay="5"] { transition-delay: 0.40s; }
+
+
+
+/* Map section text + dots */
+/* map-text-col reveal handled by JS */
+
+
+/* Press cards */
+
+
+
+/* CTA section */
+/* handled by JS */
+
+
+/* About section */
+/* handled by JS */
+
+
+/* Press eyebrow + headline */
+/* press reveal handled by JS IO system */
+
+
+
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="toggleMenu()">✕</button>
+  <ul class="mobile-menu-links">
+    <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+    <li><a href="about.html" onclick="toggleMenu()">About Eir</a></li>
+    <li><a href="how-we-work.html#capabilities" onclick="toggleMenu()">Capabilities</a></li>
+    <li><a href="how-we-work.html" onclick="toggleMenu()">How we work</a></li>
+    <li><a href="press.html" onclick="toggleMenu()">Press</a></li>
+  </ul>
+  <a href="contact.html" class="mobile-menu-cta" onclick="toggleMenu()">→ Contact</a>
+  <p class="mobile-menu-footer">Eir Försäkring AB · Stockholm</p>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><img src="images/img-003-b96b2324a598.webp" alt="Eir" style="height:22px;filter:brightness(0) invert(1);"></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Eir</a></li>
+    <li><a href="how-we-work.html#capabilities">Capabilities</a></li>
+    <li><a href="how-we-work.html">How we work</a></li>
+    <li><a href="press.html">Press</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contact</a>
+  <div class="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+
+<div class="sub-hero">
+  <p class="sub-ey">Stockholm · Founded 2019 · Swedish FSA</p>
+  <h1>A licensed carrier built<br>for modern <span class="dim">distribution.</span></h1>
+</div>
+
+<section class="sp sp-light">
+  <div class="tc">
+    <div>
+      <p class="eyebrow">Who we are</p>
+      <h2 style="color:var(--ink);">Built from the<br>ground up.</h2>
+      <p style="font-size:0.9rem;line-height:1.7;color:#5A5A5A;margin-bottom:1rem;">Eir was founded in Stockholm in 2019 with one conviction: insurance infrastructure should be digital, flexible, and built for the partners who distribute it, not the other way around.</p>
+      <p style="font-size:0.9rem;line-height:1.7;color:#5A5A5A;">Fully licensed by the Swedish FSA, entirely cloud-native, and purpose-built for distribution partners who want to launch insurance products without losing control of their customer relationships.</p>
+      <div class="kv">
+        <div class="kv-r"><span class="kv-l">Licensed by</span><span class="kv-v">Swedish FSA (FI)</span></div>
+        <div class="kv-r"><span class="kv-l">Founded</span><span class="kv-v">2019, Stockholm</span></div>
+        <div class="kv-r"><span class="kv-l">Live markets</span><span class="kv-v">10+</span></div>
+        <div class="kv-r"><span class="kv-l">Cross-border license</span><span class="kv-v">20+ markets</span></div>
+        <div class="kv-r"><span class="kv-l">Active partners</span><span class="kv-v">20+</span></div>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">Company timeline</p>
+      <div class="tl" style="padding-top:0.5rem;">
+        <div class="tl-i"><div><div class="tl-d" style="background:var(--sage);"></div></div><div><div class="tl-y" style="color:var(--sage);">2019</div><p class="tl-t" style="color:#5A5A5A;">Eir founded in Stockholm. Swedish FSA license secured. First partner integrations launched.</p></div></div>
+        <div class="tl-i"><div><div class="tl-d" style="background:var(--sage);"></div></div><div><div class="tl-y" style="color:var(--sage);">2021 to 2022</div><p class="tl-t" style="color:#5A5A5A;">Rapid Scandinavian expansion. Platform architecture scaled. Partner ecosystem grows to 10+.</p></div></div>
+        <div class="tl-i"><div><div class="tl-d" style="background:var(--sage);"></div></div><div><div class="tl-y" style="color:var(--sage);">2023 to 2024</div><p class="tl-t" style="color:#5A5A5A;">European expansion accelerates. 10+ live markets. Cross-border license extends to 20+ countries. Profitability reached.</p></div></div>
+        <div class="tl-i"><div><div class="tl-d"></div></div><div><div class="tl-y">2025</div><p class="tl-t" style="color:#5A5A5A;">20M EUR growth funding round led by Endeit Capital. Platform deepens with embedded and AI-powered capabilities.</p></div></div>
+        <div class="tl-i"><div><div class="tl-d"></div></div><div><div class="tl-y">2026</div><p class="tl-t" style="color:#5A5A5A;">Fertility+ launched with Onuava. Europe's first embedded health insurance for fertility and family building.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCIAL INFORMATION (expandable) -->
+<section class="sp sp-forest" id="financial">
+  <p class="eyebrow" style="color:var(--orange)">Financial information</p>
+  <h2 style="margin-bottom:1rem;">Reports and<br>regulatory disclosures.</h2>
+  <p style="font-size:0.9rem;line-height:1.7;color:rgba(255,255,255,0.55);max-width:60ch;margin-bottom:2rem;">Eir Försäkring AB is a wholly-owned subsidiary of Eir Invest Holding AB, an insurance holding company with Eir as its only subsidiary. Below you will find annual reports and Solvency and Financial Condition Reports (SFCR) for the company.</p>
+
+  <button class="fin-toggle" onclick="toggleFinancial()" id="finToggleBtn" style="display:flex;align-items:center;gap:0.8rem;background:none;border:1px solid rgba(255,255,255,0.2);color:#fff;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;padding:0.9rem 1.5rem;cursor:pointer;transition:border-color 0.2s;">
+    <span id="finToggleLabel">View all reports</span>
+    <span id="finToggleArrow" style="display:inline-block;transition:transform 0.3s;">→</span>
+  </button>
+
+  <div id="financialPanel" style="display:none;margin-top:2rem;opacity:0;transition:opacity 0.3s ease;">
+    <div class="kv kv-dark">
+      <div class="kv-r"><span class="kv-l">2025</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/Eir-SFCR-grupp-2025.pdf" style="color:rgba(255,255,255,0.75);">Report on solvency and financial position (Swedish)</a></span></div>
+      <div class="kv-r"><span class="kv-l">2024</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/Eir-Forsakring-AB-Annual-report-2024.pdf" style="color:rgba(255,255,255,0.75);">Annual report 2024</a></span></div>
+      <div class="kv-r"><span class="kv-l">2024</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/Eir-SFCR-grupp-2024.pdf" style="color:rgba(255,255,255,0.75);">Report on solvency and financial position (Swedish)</a></span></div>
+      <div class="kv-r"><span class="kv-l">2023</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/Eir-Forsakring-AB-Annual-report-2023.pdf" style="color:rgba(255,255,255,0.75);">Annual report 2023</a></span></div>
+      <div class="kv-r"><span class="kv-l">2023</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/Eir-SFCR-grupp-2023.pdf" style="color:rgba(255,255,255,0.75);">Report on solvency and financial position (Swedish)</a></span></div>
+      <div class="kv-r"><span class="kv-l">2022</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/Eir-Forsakring-AB-Annual-report-2022.pdf" style="color:rgba(255,255,255,0.75);">Annual report 2022</a></span></div>
+      <div class="kv-r"><span class="kv-l">2022</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/Eir-SFCR-grupp-2022-v61.pdf" style="color:rgba(255,255,255,0.75);">Report on solvency and financial position (Swedish)</a></span></div>
+      <div class="kv-r"><span class="kv-l">2021</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/Eir-Forsakring-AB-Annual-Report-2021.pdf" style="color:rgba(255,255,255,0.75);">Annual report 2021</a></span></div>
+      <div class="kv-r"><span class="kv-l">2021</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/Eir-SFCR-grupp-2021.pdf" style="color:rgba(255,255,255,0.75);">Report on solvency and financial position (Swedish)</a></span></div>
+      <div class="kv-r"><span class="kv-l">2021</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/Eir-SFCR-2021.xlsx" style="color:rgba(255,255,255,0.75);">SFCR 2021</a></span></div>
+      <div class="kv-r"><span class="kv-l">2020</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/Reviderad-SFCR-2020.pdf" style="color:rgba(255,255,255,0.75);">Revised SFCR 2020 — published November 29 (Swedish)</a></span></div>
+      <div class="kv-r"><span class="kv-l">2020</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/Eir-Gruppen_Rapport-om-solvens-och-finansiell-stallning-2020.pdf" style="color:rgba(255,255,255,0.75);">Report on solvency and financial position (Swedish)</a></span></div>
+      <div class="kv-r"><span class="kv-l">2019</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/SFCR-2019.pdf" style="color:rgba(255,255,255,0.75);">Report on solvency and financial position (Swedish)</a></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OPEN POSITIONS -->
+<section class="sp sp-light" id="careers">
+  <p class="eyebrow">Open positions</p>
+  <h2 style="color:var(--ink);margin-bottom:1.2rem;">Want to be a<br>part of our team?</h2>
+  <p style="font-size:0.9rem;line-height:1.7;color:#5A5A5A;margin-bottom:2rem;max-width:56ch;">We are always open to welcoming new colleagues, even if there is no vacancy listed below.</p>
+
+  <div class="kv" style="max-width:640px;">
+    <div class="kv-r"><span class="kv-l">Oslo</span><span class="kv-v"><a href="https://www.finn.no/job/ad/450706253" style="color:var(--ink);">Skadebehandler motor</a></span></div>
+    <div class="kv-r"><span class="kv-l">Oslo</span><span class="kv-v"><a href="https://www.finn.no/job/ad/454763464" style="color:var(--ink);">Junior Analyst</a></span></div>
+    <div class="kv-r"><span class="kv-l">Open</span><span class="kv-v"><a href="https://www.eirforsakring.com/s/Spontaneous-application.pdf" style="color:var(--ink);">Spontaneous application</a></span></div>
+  </div>
+
+  <div style="margin-top:2.5rem;">
+    <a href="mailto:amanda.norberg@eirforsakring.se" class="btn-primary" style="display:inline-flex;">Send us your application today <span class="dot"></span></a>
+  </div>
+</section>
+
+<div class="sp-dark cta-b"><h2>Want to explore a partnership?</h2><a href="contact.html" class="btn-primary" style="margin:0 auto;display:inline-flex;">Contact <span class="dot"></span></a></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+
+    <div>
+      <img src="images/img-003-b96b2324a598.webp" class="footer-logo">
+      <p class="footer-tagline">A fully licensed insurance company offering purely digital, scalable insurance products to distribution partners across Europe.</p>
+      <p class="footer-tagline-sub">Licensed across Europe · API-first · Cloud-native</p>
+      <a href="https://linkedin.com" style="display:inline-flex;align-items:center;gap:0.5rem;text-decoration:none;opacity:0.3;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.65'" onmouseout="this.style.opacity='0.3'" aria-label="LinkedIn">
+        <img src="images/img-036-cc2fe2f0e2ed.png" alt="LinkedIn" style="height:16px;width:auto;">
+      </a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Eir</a></li>
+        <li><a href="how-we-work.html">How we work</a></li>
+        <li><a href="press.html">Press</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <ul>
+        <li><a href="how-we-work.html#capabilities">Capabilities</a></li>
+        <li><a href="how-we-work.html#products">Products</a></li>
+        <li><a href="about.html#financial">Financial information</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <div class="footer-contact-item">
+        <div class="label">Become a partner</div>
+        <a href="mailto:partnership@eirforsakring.se">partnership@eirforsakring.se</a>
+      </div>
+      <div class="footer-contact-item">
+        <div class="label">General enquiries</div>
+        <a href="mailto:info@eirforsakring.se">info@eirforsakring.se</a>
+      </div>
+      <div class="footer-contact-item">
+        <div class="label">Career opportunities</div>
+        <a href="mailto:career@eirforsakring.se">career@eirforsakring.se</a>
+      </div>
+      <div class="footer-contact-item">
+        <div class="label">Claims</div>
+        <a href="mailto:claims@eirforsakring.se">claims@eirforsakring.se</a>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">
+      <a href="about.html#financial">Financial information</a>
+      <a href="privacy.html">Privacy policy &amp; cookies</a>
+      <a href="complaints.html">Complaints</a>
+      <a href="contact.html#insured">Already insured with Eir?</a>
+    </div>
+    <span class="footer-copy">© 2026 Eir Försäkring AB · Org: 559166-0617</span>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const isOpen = menu.classList.contains('open');
+  menu.classList.toggle('open', !isOpen);
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+  // Animate hamburger
+  const bars = document.querySelectorAll('.nav-hamburger span');
+  if (!isOpen) {
+    bars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+    bars[1].style.opacity = '0';
+    bars[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+  } else {
+    bars.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+  }
+}
+
+// Close menu on resize to desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+    document.querySelectorAll('.nav-hamburger span').forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+  }
+});
+
+// Hide on scroll down, show on scroll up
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  const current = window.scrollY;
+  if (current > lastScroll && current > 100) {
+    nav.classList.add('nav-hidden');
+    nav.classList.remove('nav-scrolled');
+  } else {
+    nav.classList.remove('nav-hidden');
+    if (current > 80) nav.classList.add('nav-scrolled');
+    else nav.classList.remove('nav-scrolled');
+  }
+  lastScroll = current;
+});
+
+// Ecosystem panel toggle
+function toggleEcosystem() {
+  const panel = document.getElementById('ecosystemPanel');
+  const arrow = document.getElementById('ecosystemArrow');
+  if (!panel) return;
+  const isOpen = panel.style.display !== 'none';
+  if (isOpen) {
+    panel.style.opacity = '0';
+    panel.style.transform = 'translateY(-6px)';
+    setTimeout(() => { panel.style.display = 'none'; }, 240);
+    arrow.style.transform = '';
+  } else {
+    panel.style.display = 'block';
+    panel.style.transition = 'opacity 0.28s ease, transform 0.28s ease';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      panel.style.opacity = '1';
+      panel.style.transform = 'translateY(0)';
+    }));
+    arrow.style.transform = 'rotate(90deg)';
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// SECTION 03 — STATS: materialize → then count
+// ═══════════════════════════════════════════════════════
+(function() {
+  const statsEl = document.querySelector('.stats');
+  if (!statsEl) return;
+  const statItems = statsEl.querySelectorAll('.stat');
+  const targets = [
+    { el: statsEl.querySelectorAll('.stat-num')[0], end: 10,  suffix: '+' },
+    { el: statsEl.querySelectorAll('.stat-num')[1], end: 100, suffix: '%' },
+    { el: statsEl.querySelectorAll('.stat-num')[2], end: 20,  suffix: '+' }
+  ];
+  targets.forEach(({ el, suffix }) => {
+    if (el) el.innerHTML = '0<sup>' + suffix + '</sup>';
+  });
+  // Animate individual .stat items — NOT the parent .stats container
+  statItems.forEach((item) => {
+    item.style.opacity   = '0';
+    item.style.transform = 'translateY(18px)';
+    item.style.filter    = 'blur(6px)';
+    item.style.transition =
+      'opacity 0.7s cubic-bezier(0.16,1,0.3,1), ' +
+      'transform 0.7s cubic-bezier(0.16,1,0.3,1), ' +
+      'filter 0.7s cubic-bezier(0.16,1,0.3,1)';
+  });
+  let counted = false;
+  function runCounters() {
+    if (counted) return;
+    counted = true;
+    const duration = 1600;
+    const start = performance.now();
+    function tick(now) {
+      const raw = Math.min((now - start) / duration, 1);
+      const t = 1 - Math.pow(1 - raw, 3);
+      targets.forEach(({ el, end, suffix }) => {
+        if (el) el.innerHTML = Math.round(t * end) + '<sup>' + suffix + '</sup>';
+      });
+      if (raw < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.25) {
+        statItems.forEach((item, i) => {
+          setTimeout(() => {
+            item.style.opacity   = '1';
+            item.style.transform = 'translateY(0)';
+            item.style.filter    = 'blur(0)';
+          }, i * 90);
+        });
+        setTimeout(runCounters, 500);
+        observer.unobserve(statsEl);
+      }
+    });
+  }, { threshold: [0, 0.25, 0.5] });
+  observer.observe(statsEl);
+})();
+
+
+// ═══════════════════════════════════════════════════════
+// SECTION 05 — PRODUCTS 3D scroll-driven animation
+// ═══════════════════════════════════════════════════════
+(function() {
+  const section = document.querySelector('.products-dark');
+  if (!section) return;
+
+  const eyebrow = section.querySelector('.products-eyebrow-anim');
+  const tiles   = Array.from(section.querySelectorAll('.product-dark-tile'));
+  const cta     = section.querySelector('.products-cta-anim');
+
+  // Scroll progress thresholds (0 = section enters viewport, 1 = section top at viewport top)
+  // Cards staggered ~0.12 apart to simulate 120ms delay at normal scroll speed
+  const IN  = { eyebrow: 0.02, card0: 0.06, card1: 0.14, card2: 0.22, card3: 0.30, cta: 0.40 };
+  const OUT = { cta: 0.34, card3: 0.24, card2: 0.16, card1: 0.08, card0: 0.03, eyebrow: 0.01 };
+
+  function getProgress() {
+    const rect = section.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const p = (vh - rect.top) / (vh + rect.height * 0.25);
+    return Math.max(0, Math.min(1, p));
+  }
+
+  // Interpolate card transform based on progress between start and landed
+  function getCardStyle(globalP, threshold) {
+    // local 0→1 progress for this card (0 = just started, 1 = fully landed)
+    const local = Math.max(0, Math.min(1, (globalP - threshold) / 0.18));
+    // ease: cubic bezier approximation — slow at end
+    const t = 1 - Math.pow(1 - local, 2.5);
+    const rotY   = -8 * (1 - t);
+    const rotX   =  4 * (1 - t);
+    const transY = 40 * (1 - t);
+    const opacity = t;
+    return { rotY, rotX, transY, opacity };
+  }
+
+  let lastP = -1;
+
+  function update() {
+    const p = getProgress();
+    if (Math.abs(p - lastP) < 0.0005) return;
+    const dir = p > lastP ? 1 : -1;
+    lastP = p;
+
+    const show = (el) => el && el.classList.add('anim-in');
+    const hide = (el) => el && el.classList.remove('anim-in');
+
+    // Eyebrow
+    p >= IN.eyebrow ? show(eyebrow) : hide(eyebrow);
+
+    // Cards — use direct style interpolation for smooth scrub
+    const cardThresholds = [IN.card0, IN.card1, IN.card2, IN.card3];
+    tiles.forEach((tile, i) => {
+      const threshold = cardThresholds[i];
+      if (p < OUT['card' + i] && dir < 0) {
+        // scrolling back up past out threshold — hide via class
+        tile.style.transform = '';
+        tile.style.opacity = '';
+        hide(tile);
+      } else if (p >= threshold) {
+        // within the landing zone — interpolate directly for scrub feel
+        const s = getCardStyle(p, threshold);
+        if (s.opacity >= 0.99) {
+          // fully landed — use class (cleaner)
+          tile.style.transform = '';
+          tile.style.opacity = '';
+          show(tile);
+        } else {
+          // mid-animation — set inline style for smooth scrub
+          tile.classList.remove('anim-in');
+          tile.style.opacity = s.opacity.toFixed(3);
+          tile.style.transform = `rotateY(${s.rotY.toFixed(2)}deg) rotateX(${s.rotX.toFixed(2)}deg) translateY(${s.transY.toFixed(2)}px)`;
+        }
+      } else {
+        // not yet reached
+        tile.style.transform = '';
+        tile.style.opacity = '';
+        hide(tile);
+      }
+    });
+
+    // CTA
+    p >= IN.cta ? show(cta) : hide(cta);
+  }
+
+  let ticking = false;
+  function runAll() {
+    update();
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => { runAll(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
+  runAll();
+})();
+
+// ── EUROPEAN FOOTPRINT blur-in ──
+(function() {
+  var ms = document.getElementById('map');
+  if (!ms) return;
+  var tc = ms.querySelector('.map-text-col');
+  if (!tc) return;
+  var vc = ms.querySelector('.map-visual-col');
+  var els = [
+    tc.querySelector('.eyebrow'),
+    tc.querySelector('.section-h2'),
+    tc.querySelector('.section-sub'),
+    tc.querySelector('.market-lists'),
+    tc.querySelector('.map-legend'),
+    tc.querySelector('.map-eco-btn'),
+    vc
+  ].filter(Boolean);
+
+  var inView = false;
+
+  // Reveal: animate each element in with stagger
+  function reveal() {
+    els.forEach(function(el, i) {
+      el.style.transition = 'opacity 0.6s ' + (i*0.07) + 's ease, filter 0.55s ' + (i*0.07) + 's ease, transform 0.65s ' + (i*0.07) + 's cubic-bezier(0.16,1,0.3,1)';
+      el.style.opacity = '1';
+      el.style.filter = '';
+      el.style.transform = '';
+    });
+  }
+
+  // Hide: instant reset (no animation)
+  function conceal() {
+    els.forEach(function(el) {
+      el.style.transition = 'none';
+      el.style.opacity = '0';
+      el.style.filter = 'blur(8px)';
+      el.style.transform = 'translateY(10px)';
+    });
+  }
+
+  // Note: elements start visible (no initial hide)
+  // IO triggers blur-in animation on entry
+
+  // First: set all to hidden state ready for reveal animation
+  conceal();
+
+  new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && !inView) {
+        inView = true;
+        reveal();
+      } else if (!e.isIntersecting && inView) {
+        // Reset instantly so animation replays next time
+        inView = false;
+        conceal();
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '100px 0px 0px 0px' }).observe(ms);
+})();
+
+// ═══════════════════════════════════════════════════════
+// SECTION 06 — HOW WE WORK — scroll storytelling
+// ═══════════════════════════════════════════════════════
+(function () {
+  const spacer  = document.querySelector('.how-pin-spacer');
+  const section = document.querySelector('.how-section');
+  if (!spacer || !section) return;
+
+  const bg       = section.querySelector('.how-bg');
+  const eyebrow  = section.querySelector('.how-eyebrow-hw');
+  const headline = section.querySelector('.how-headline-hw');
+  const sub      = section.querySelector('.how-sub-hw');
+  const steps    = Array.from(section.querySelectorAll('.how-step-item'));
+
+  // ── Helpers ──
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+  // Map p from [a,b] to [0,1]
+  function norm(p, a, b) { return clamp((p - a) / (b - a), 0, 1); }
+  // Ease out cubic
+  function ease(t) { return 1 - Math.pow(1 - t, 3); }
+
+  // Scroll progress: 0 when spacer top hits viewport top, 1 at end
+  function getP() {
+    const r    = spacer.getBoundingClientRect();
+    const vh   = window.innerHeight;
+    const scrolled = Math.max(0, -r.top);
+    const total    = Math.max(1, spacer.offsetHeight - vh);
+    return Math.min(1, scrolled / total);
+  }
+
+  // Apply opacity+blur+translateY to a header element (materialize-first)
+  function applyReveal(el, t) {
+    const e = ease(t);
+    el.style.opacity   = e.toFixed(3);
+    el.style.filter    = `blur(${lerp(6, 0, e).toFixed(2)}px)`;
+    el.style.transform = `translateY(${lerp(18, 0, e).toFixed(2)}px)`;
+  }
+
+  // Apply opacity+blur+translateY to a step item
+  function applyStep(el, opacity, ty) {
+    el.style.opacity   = opacity.toFixed(3);
+    el.style.transform = `translateY(${ty.toFixed(2)}px)`;
+    // Lock divider line opacity once step becomes visible — never let it change after
+    const line = el.querySelector('.how-step-line');
+    if (line) {
+      // Line only shows when step is visible (opacity > 0.3); then stays locked at 0.45
+      line.style.opacity = opacity > 0.3 ? '0.45' : '0';
+    }
+  }
+
+  // ── Phase thresholds — fluid, overlapping, releases quickly ──
+  // Header:    0.00 → 0.10
+  // Step 01:   0.08 → 0.20
+  // Step 02:   0.22 → 0.34
+  // Step 03:   0.36 → 0.50
+  // All done:  0.60   ← pin releases here (320vh × 0.60 = 192vh total scroll)
+
+  const P = {
+    hdrStart: 0.00, hdrEnd: 0.10,
+    s0Start:  0.22, s0End:  0.34,
+    s1Start:  0.36, s1End:  0.46,
+    s2Start:  0.48, s2End:  0.58,
+    allDone:  0.62,
+    s0Active: [0.34, 0.44],
+    s1Active: [0.46, 0.56],
+    s2Active: [0.58, 0.62],
+  };
+
+  function update() {
+    const p = getP();
+
+    // ── Background: scale 1.00→1.08, darken, parallax drift ──
+    const bgT      = ease(clamp(p / 0.10, 0, 1));
+    const scale    = lerp(1.00, 1.08, p);          // 0→8% zoom, slightly more
+    const parallax = (p * 3.0).toFixed(2);          // 0→3% drift
+    const bright   = lerp(0.62, 0.50, bgT);         // richer dark
+    const contrast = lerp(1.05, 1.15, bgT);         // more contrast
+    const scrim    = lerp(0.42, 0.64, bgT);
+
+    bg.style.transform = `scale(${scale.toFixed(4)}) translateY(-${parallax}%)`;
+    bg.style.filter    = `brightness(${bright.toFixed(3)}) contrast(${contrast.toFixed(3)})`;
+    section.style.setProperty('--hw-scrim', scrim.toFixed(3));
+
+    // ── Phase 01: Header — overlapping cascade ──
+    applyReveal(eyebrow,  norm(p, 0.00, 0.07));
+    applyReveal(headline, norm(p, 0.02, 0.09));
+    applyReveal(sub,      norm(p, 0.04, 0.11));
+
+    // ── Steps ──
+    // Step 0
+    const s0t = ease(norm(p, P.s0Start, P.s0End));
+    const s0Active = p >= P.s0Active[0] && p < P.s1Active[0];
+    const s0Done   = p >= P.s1Active[0];
+    const s0Opacity = s0t > 0 ? (s0Done ? 1.0 : s0Active ? 1.0 : lerp(0, 0.7, s0t)) : 0;
+    const s0Secondary = s0Done && p < P.allDone;
+    applyStep(steps[0], s0Secondary ? 0.68 : s0Opacity, lerp(12, 0, s0t));
+    steps[0].classList.toggle('hw-step-visible', s0t > 0);
+    steps[0].classList.toggle('hw-step-active',  s0Active);
+    steps[0].classList.toggle('hw-step-done',    s0Done);
+
+    // Step 1
+    const s1t = ease(norm(p, P.s1Start, P.s1End));
+    const s1Active = p >= P.s1Active[0] && p < P.s2Active[0];
+    const s1Done   = p >= P.s2Active[0];
+    const s1Opacity = s1t > 0 ? (s1Done ? 1.0 : s1Active ? 1.0 : lerp(0, 0.7, s1t)) : 0;
+    const s1Secondary = s1Done && p < P.allDone;
+    applyStep(steps[1], s1Secondary ? 0.68 : s1Opacity, lerp(12, 0, s1t));
+    steps[1].classList.toggle('hw-step-visible', s1t > 0);
+    steps[1].classList.toggle('hw-step-active',  s1Active);
+    steps[1].classList.toggle('hw-step-done',    s1Done);
+
+    // Step 2
+    const s2t = ease(norm(p, P.s2Start, P.s2End));
+    const s2Active = p >= P.s2Active[0] && p < P.allDone;
+    const s2Done   = p >= P.allDone;
+    const s2Opacity = s2t > 0 ? (s2Done ? 1.0 : s2Active ? 1.0 : lerp(0, 0.7, s2t)) : 0;
+    applyStep(steps[2], s2Opacity, lerp(12, 0, s2t));
+    steps[2].classList.toggle('hw-step-visible', s2t > 0);
+    steps[2].classList.toggle('hw-step-active',  s2Active);
+    steps[2].classList.toggle('hw-step-done',    s2Done);
+
+    // When allDone: restore all to full opacity
+    if (p >= P.allDone) {
+      applyStep(steps[0], 1.0, 0);
+      applyStep(steps[1], 1.0, 0);
+      applyStep(steps[2], 1.0, 0);
+    }
+  }
+
+  let raf = null;
+  window.addEventListener('scroll', () => {
+    if (!raf) raf = requestAnimationFrame(() => { update(); raf = null; });
+  }, { passive: true });
+  requestAnimationFrame(update);
+})();
+
+
+// ═══════════════════════════════════════════════════════
+// SECTION 04 — CAPABILITIES scroll-driven animation
+// ═══════════════════════════════════════════════════════
+(function() {
+  const section = document.getElementById('offer');
+  if (!section) return;
+
+  const eyebrow  = section.querySelector('.offer-eyebrow-anim');
+  const headline = section.querySelector('.offer-headline-anim');
+  const cards    = Array.from(section.querySelectorAll('.offer-card-v'));
+  const cardsWrap= section.querySelector('.offer-cards-visual');
+  const subText  = section.querySelector('.offer-sub-text-anim');
+  const cta      = section.querySelector('.offer-cta-anim');
+
+  // Thresholds: at what scroll progress (0–1 through section) each phase triggers
+  // Progress = how far the section has scrolled into viewport
+  const PHASE = {
+    eyebrow:  0.04,
+    headline: 0.09,
+    guides:   0.14,
+    card0:    0.18,
+    card1:    0.28,
+    card2:    0.38,
+    card3:    0.48,
+    subText:  0.58,
+    cta:      0.66,
+  };
+
+  // Reverse thresholds (when scrolling back up, hide slightly earlier)
+  const PHASE_OUT = {
+    cta:      0.60,
+    subText:  0.52,
+    card3:    0.42,
+    card2:    0.32,
+    card1:    0.22,
+    card0:    0.13,
+    guides:   0.09,
+    headline: 0.05,
+    eyebrow:  0.01,
+  };
+
+  function getProgress() {
+    const rect = section.getBoundingClientRect();
+    const vh = window.innerHeight;
+    // 0 = section just entered bottom of viewport
+    // 1 = section has scrolled so top is at top of viewport
+    const p = (vh - rect.top) / (vh + rect.height * 0.3);
+    return Math.max(0, Math.min(1, p));
+  }
+
+  let lastProgress = -1;
+
+  function update() {
+    const p = getProgress();
+    if (Math.abs(p - lastProgress) < 0.001) return;
+    const dir = p > lastProgress ? 1 : -1;
+    lastProgress = p;
+
+    // helper
+    const show = (el) => el && el.classList.add('anim-in');
+    const hide = (el) => el && el.classList.remove('anim-in');
+
+    if (dir >= 0) {
+      // scrolling down — reveal
+      if (p >= PHASE.eyebrow)  show(eyebrow);
+      if (p >= PHASE.headline) show(headline);
+      if (p >= PHASE.guides && cardsWrap) cardsWrap.classList.add('guides-in');
+      if (p >= PHASE.card0)    show(cards[0]);
+      if (p >= PHASE.card1)    show(cards[1]);
+      if (p >= PHASE.card2)    show(cards[2]);
+      if (p >= PHASE.card3)    show(cards[3]);
+      if (p >= PHASE.subText)  show(subText);
+      if (p >= PHASE.cta)      show(cta);
+    } else {
+      // scrolling up — conceal in reverse
+      if (p < PHASE_OUT.cta)     hide(cta);
+      if (p < PHASE_OUT.subText) hide(subText);
+      if (p < PHASE_OUT.card3)   hide(cards[3]);
+      if (p < PHASE_OUT.card2)   hide(cards[2]);
+      if (p < PHASE_OUT.card1)   hide(cards[1]);
+      if (p < PHASE_OUT.card0)   hide(cards[0]);
+      if (p < PHASE_OUT.guides && cardsWrap) cardsWrap.classList.remove('guides-in');
+      if (p < PHASE_OUT.headline) hide(headline);
+      if (p < PHASE_OUT.eyebrow)  hide(eyebrow);
+    }
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update(); // initial state
+
+})();
+
+// Map: materialize text col, then pop dots in staggered
+(function() {
+  const mapSection = document.getElementById('map');
+  if (!mapSection) return;
+
+  let dotsShown = false;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Wait for map-section fade-in before showing dots (~800ms)
+        setTimeout(() => {
+          mapSection.classList.add('dots-visible');
+          mapSection.classList.remove('dots-hidden');
+          mapSection.querySelectorAll('.map-dot').forEach((dot, i) => {
+            const offset = -(Math.random() * 3.8).toFixed(2);
+            dot.style.animationDelay = offset + 's';
+          });
+        }, 800);
+      } else {
+        mapSection.classList.remove('dots-visible');
+        mapSection.classList.add('dots-hidden');
+        dotsShown = false;
+      }
+    });
+  }, { threshold: 0.15 });
+
+  observer.observe(mapSection);
+})();
+
+
+// ═══════════════════════════════════════════════════════
+// BLUR-IN SYSTEM — IntersectionObserver, CSS transitions, iOS-safe
+// Applies opacity 0→1 + blur 8px→0 when section enters viewport.
+// Bidirectional: resets when leaving so effect replays every pass.
+// ═══════════════════════════════════════════════════════
+(function() {
+
+  // CSS transition string for smooth reveal
+  var TR = 'opacity 0.55s ease, filter 0.5s ease';
+  var TR_Y = 'opacity 0.55s ease, filter 0.5s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1)';
+
+  // Hide an element (called before IO starts observing)
+  function hide(el, useY) {
+    el.style.transition = 'none';
+    el.style.opacity    = '0';
+    el.style.filter     = 'blur(8px)';
+    if (useY) el.style.transform = 'translateY(12px)';
+  }
+
+  // Show an element (called when IO fires isIntersecting)
+  function show(el, useY, delay) {
+    var d = delay || 0;
+    setTimeout(function() {
+      el.style.transition = useY ? TR_Y : TR;
+      el.style.opacity    = '1';
+      el.style.filter     = '';
+      if (useY) el.style.transform = '';
+    }, d);
+  }
+
+  // Reset element back to hidden (called when IO fires !isIntersecting)
+  function reset(el, useY) {
+    el.style.transition = 'none';
+    el.style.opacity    = '0';
+    el.style.filter     = 'blur(8px)';
+    if (useY) el.style.transform = 'translateY(12px)';
+  }
+
+  // Create an IO that reveals a list of [{el, useY, delay}] when section enters
+  function watchSection(section, items, threshold) {
+    threshold = threshold || 0.08;
+    // Hide all immediately
+    items.forEach(function(item) { hide(item.el, item.useY); });
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          items.forEach(function(item) { show(item.el, item.useY, item.delay || 0); });
+        } else {
+          items.forEach(function(item) { reset(item.el, item.useY); });
+        }
+      });
+    }, { threshold: threshold, rootMargin: '0px 0px -40px 0px' });
+
+    observer.observe(section);
+  }
+
+  // ── STATS ──
+  // Stats section is always visible — count-up animation handled by countObs
+  // No opacity/blur animation on stats (overflow:hidden conflicts with filter)
+
+  // ── CAPABILITIES ──
+  var capWrap = document.querySelector('.offer-photo-wrap');
+  if (capWrap) {
+    var capItems = [];
+    var eyebrow  = capWrap.querySelector('.offer-eyebrow-anim');
+    var headline = capWrap.querySelector('.offer-headline-anim');
+    if (eyebrow)  capItems.push({ el: eyebrow,  useY: false, delay: 0   });
+    if (headline) capItems.push({ el: headline, useY: false, delay: 80  });
+    var cards = capWrap.querySelectorAll('.offer-card-v');
+    cards.forEach(function(c, i) { capItems.push({ el: c, useY: false, delay: 150 + i * 70 }); });
+    var subText = capWrap.querySelector('.offer-sub-text-anim');
+    var ctaEl   = capWrap.querySelector('.offer-cta-anim');
+    if (subText) capItems.push({ el: subText, useY: false, delay: 450 });
+    if (ctaEl)   capItems.push({ el: ctaEl,   useY: false, delay: 520 });
+    if (capItems.length) watchSection(capWrap, capItems, 0.08);
+  }
+
+  // ── PRESS / IN THE NEWS ──
+  // Eyebrow + headline blur-in, then cards stagger in like Products
+  var pressSection = document.querySelector('.press-section');
+  if (pressSection) {
+    var pressItems = [];
+    var pEyebrow = pressSection.querySelector('.eyebrow');
+    var pH2      = pressSection.querySelector('.section-h2');
+    if (pEyebrow) pressItems.push({ el: pEyebrow, useY: true,  delay: 0   });
+    if (pH2)      pressItems.push({ el: pH2,      useY: true,  delay: 80  });
+    // Cards stagger in sequence like Products tiles
+    var pressCards = pressSection.querySelectorAll('.press-card');
+    pressCards.forEach(function(card, i) {
+      pressItems.push({ el: card, useY: true, delay: 350 + i * 150 });
+    });
+    if (pressItems.length) watchSection(pressSection, pressItems, 0.05);
+  }
+
+  // ── ABOUT EIR ──
+  var aboutSection = document.querySelector('.about-section');
+  if (aboutSection) {
+    var aboutLayout = aboutSection.querySelector('.about-layout');
+    if (aboutLayout) watchSection(aboutSection, [{ el: aboutLayout, useY: false, delay: 0 }], 0.10);
+  }
+
+  // ── LAUNCH CTA ──
+  var ctaSection = document.querySelector('.cta-section');
+  if (ctaSection) {
+    var ctaInner = ctaSection.querySelector('.cta-inner');
+    if (ctaInner) watchSection(ctaSection, [{ el: ctaInner, useY: false, delay: 0 }], 0.10);
+  }
+
+})();
+
+</script>
+
+<script>
+function toggleFinancial() {
+  const panel = document.getElementById('financialPanel');
+  const label = document.getElementById('finToggleLabel');
+  const arrow = document.getElementById('finToggleArrow');
+  const isOpen = panel.style.display !== 'none';
+  if (isOpen) {
+    panel.style.opacity = '0';
+    setTimeout(() => { panel.style.display = 'none'; }, 240);
+    label.textContent = 'View all reports';
+    arrow.style.transform = '';
+  } else {
+    panel.style.display = 'block';
+    requestAnimationFrame(() => requestAnimationFrame(() => { panel.style.opacity = '1'; }));
+    label.textContent = 'Hide reports';
+    arrow.style.transform = 'rotate(90deg)';
+  }
+}
+</script>
+</body>
+</html>

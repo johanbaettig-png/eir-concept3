@@ -624,8 +624,19 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 .offer-sub-text {
   font-size: clamp(0.9rem, 1.2vw, 1.05rem);
   line-height: 1.65;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.92);
   max-width: 52ch;
+}
+.offer-sub-plate {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background: rgba(8,14,10,0.62);
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  width: fit-content;
+  max-width: 100%;
 }
 
 
@@ -1879,9 +1890,11 @@ footer::before {
 
     </div>
 
-    <div class="offer-sub-row" style="display:flex;flex-direction:column;align-items:flex-start;gap:1.5rem;transition-delay:0.25s">
-      <p class="offer-sub-text offer-sub-text-anim" style="margin-bottom:0;">We handle licensing, risk, compliance and technology, so you can focus on your customers.</p>
-      <a href="how-we-work.html#capabilities" class="btn-secondary offer-cta-anim" style="white-space:nowrap;flex-shrink:0;">Explore capabilities →</a>
+    <div class="offer-sub-row" style="transition-delay:0.25s">
+      <div class="offer-sub-plate">
+        <p class="offer-sub-text offer-sub-text-anim" style="margin-bottom:0;">We handle licensing, risk, compliance and technology, so you can focus on your customers.</p>
+        <a href="how-we-work.html#capabilities" class="btn-secondary offer-cta-anim" style="white-space:nowrap;flex-shrink:0;">Explore capabilities →</a>
+      </div>
     </div>
 
   </div><!-- /offer-photo-wrap -->

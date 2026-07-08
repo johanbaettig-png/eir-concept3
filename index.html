@@ -522,7 +522,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   object-fit: cover;
   object-position: center;
   /* Same treatment as old still image */
-  filter: saturate(0.65) brightness(0.8) sepia(0.1);
+  filter: saturate(0.85) brightness(1.0) contrast(0.94) sepia(0.05) hue-rotate(-2deg);
   z-index: 0;
 }
 .offer-header {
@@ -544,7 +544,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   inset: 0;
   z-index: 1;
   /* Colour cast overlay — same as the old image filter */
-  background: rgba(46,61,47,0.10);
+  background: rgba(46,61,47,0.06);
   mix-blend-mode: multiply;
 }
 /* Gradient overlays: dark at top/bottom edges, keep mid-photo visible */
@@ -554,10 +554,10 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   inset: 0;
   background:
     linear-gradient(to bottom,
-      rgba(10,20,16,0.35) 0%,
-      rgba(10,20,16,0.18) 30%,
-      rgba(10,20,16,0.18) 70%,
-      rgba(10,20,16,0.42) 100%);
+      rgba(10,20,16,0.22) 0%,
+      rgba(10,20,16,0.10) 30%,
+      rgba(10,20,16,0.10) 70%,
+      rgba(10,20,16,0.30) 100%);
   z-index: 1;
 }
 
@@ -575,7 +575,6 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   transition: transform 0.65s 0.05s cubic-bezier(0.16,1,0.3,1);
   padding: clamp(2.5rem,5vw,4rem) clamp(1.25rem,2.5vw,2.5rem) clamp(2.5rem,5vw,4rem);
   border-right: 1px solid rgba(255,255,255,0.13);
-  background: rgba(10,20,16,0.22);
   transition: background 0.3s;
 }
 /* First card aligns with global left margin */
@@ -583,7 +582,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   padding-left: clamp(1.25rem,5vw,3rem);
 }
 .offer-card-v:last-child { border-right: none; }
-.offer-card-v:hover { background: rgba(255,255,255,0.05); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1); }
+.offer-card-v:hover { background: rgba(8,14,10,0.6); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); }
 
 .offer-card-icon {
   width: 50px;

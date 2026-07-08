@@ -369,26 +369,26 @@ nav.nav-scrolled { background: rgba(14,26,18,0.92); backdrop-filter: blur(12px);
 .stat-conic {
   position: absolute;
   inset: -120%;
-  filter: blur(55px);
-  opacity: 0.13;
+  filter: blur(45px);
+  opacity: 0.16;
   pointer-events: none;
   background: conic-gradient(from 0deg at 38% 55%,
-    #162614 0deg, #2E4D2A 40deg, #5C7A5E 85deg,
-    #3A5C3A 125deg, #0A1410 175deg, #1A2E1A 215deg,
-    #d86b32 250deg, #2A3A28 280deg, #4A6E48 318deg, #162614 360deg);
+    #1E3A1C 0deg, #3C7A3E 40deg, #7FC77A 85deg,
+    #4E8C4E 125deg, #12241A 175deg, #234A22 215deg,
+    #FF7A29 250deg, #345C30 280deg, #5FA860 318deg, #1E3A1C 360deg);
   animation: gsAnim1 18s linear infinite;
 }
 .stat:nth-child(2) .stat-conic {
   background: conic-gradient(from 180deg at 62% 40%,
-    #0A1410 0deg, #d86b32 28deg, #2E3D2F 70deg,
-    #4A6E4A 115deg, #0A1410 165deg, #5C7A5E 205deg,
-    #1A2A1A 252deg, #3A5030 295deg, #d86b32 335deg, #0A1410 360deg);
+    #12241A 0deg, #FF8A3D 28deg, #3A5238 70deg,
+    #5FA85F 115deg, #12241A 165deg, #7FC77A 205deg,
+    #234522 252deg, #4E7A42 295deg, #FF8A3D 335deg, #12241A 360deg);
   animation: gsAnim1 22s linear infinite reverse;
 }
 .stat:nth-child(3) .stat-conic {
   background: conic-gradient(from 90deg at 50% 50%,
-    #162614 0deg, #5C7A5E 60deg, #2E4D2A 120deg,
-    #d86b32 200deg, #0A1410 260deg, #2E4D2A 320deg, #162614 360deg);
+    #1E3A1C 0deg, #7FC77A 60deg, #3C7A3E 120deg,
+    #FF7A29 200deg, #12241A 260deg, #3C7A3E 320deg, #1E3A1C 360deg);
   animation: gsAnim1 15s linear infinite;
   animation-delay: -7s;
 }
@@ -420,9 +420,9 @@ nav.nav-scrolled { background: rgba(14,26,18,0.92); backdrop-filter: blur(12px);
   margin-bottom: 0.8rem;
   position: relative;
   background-image: conic-gradient(from 0deg at 38% 55%,
-    #162614 0deg, #2E4D2A 40deg, #5C7A5E 85deg,
-    #3A5C3A 125deg, #0A1410 175deg, #1A2E1A 215deg,
-    #d86b32 250deg, #2A3A28 280deg, #4A6E48 318deg, #162614 360deg);
+    #1E3A1C 0deg, #3C7A3E 40deg, #7FC77A 85deg,
+    #4E8C4E 125deg, #12241A 175deg, #234A22 215deg,
+    #FF7A29 250deg, #345C30 280deg, #5FA860 318deg, #1E3A1C 360deg);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -431,16 +431,16 @@ nav.nav-scrolled { background: rgba(14,26,18,0.92); backdrop-filter: blur(12px);
 }
 .stat:nth-child(2) .stat-num {
   background-image: conic-gradient(from 180deg at 62% 40%,
-    #0A1410 0deg, #d86b32 28deg, #2E3D2F 70deg,
-    #4A6E4A 115deg, #0A1410 165deg, #5C7A5E 205deg,
-    #1A2A1A 252deg, #3A5030 295deg, #d86b32 335deg, #0A1410 360deg);
+    #12241A 0deg, #FF8A3D 28deg, #3A5238 70deg,
+    #5FA85F 115deg, #12241A 165deg, #7FC77A 205deg,
+    #234522 252deg, #4E7A42 295deg, #FF8A3D 335deg, #12241A 360deg);
   background-size: 300% 300%;
   animation: statTextGradient2 22s ease-in-out infinite alternate;
 }
 .stat:nth-child(3) .stat-num {
   background-image: conic-gradient(from 90deg at 50% 50%,
-    #162614 0deg, #5C7A5E 60deg, #2E4D2A 120deg,
-    #d86b32 200deg, #0A1410 260deg, #2E4D2A 320deg, #162614 360deg);
+    #1E3A1C 0deg, #7FC77A 60deg, #3C7A3E 120deg,
+    #FF7A29 200deg, #12241A 260deg, #3C7A3E 320deg, #1E3A1C 360deg);
   background-size: 300% 300%;
   animation: statTextGradient3 20s ease-in-out infinite alternate;
 }
@@ -522,7 +522,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   object-fit: cover;
   object-position: center;
   /* Same treatment as old still image */
-  filter: saturate(0.45) brightness(0.55) sepia(0.25);
+  filter: saturate(0.65) brightness(0.8) sepia(0.1);
   z-index: 0;
 }
 .offer-header {
@@ -544,7 +544,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   inset: 0;
   z-index: 1;
   /* Colour cast overlay — same as the old image filter */
-  background: rgba(46,61,47,0.18);
+  background: rgba(46,61,47,0.10);
   mix-blend-mode: multiply;
 }
 /* Gradient overlays: dark at top/bottom edges, keep mid-photo visible */
@@ -554,10 +554,10 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   inset: 0;
   background:
     linear-gradient(to bottom,
-      rgba(10,20,16,0.55) 0%,
-      rgba(10,20,16,0.35) 30%,
-      rgba(10,20,16,0.35) 70%,
-      rgba(10,20,16,0.65) 100%);
+      rgba(10,20,16,0.35) 0%,
+      rgba(10,20,16,0.18) 30%,
+      rgba(10,20,16,0.18) 70%,
+      rgba(10,20,16,0.42) 100%);
   z-index: 1;
 }
 
@@ -575,6 +575,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   transition: transform 0.65s 0.05s cubic-bezier(0.16,1,0.3,1);
   padding: clamp(2.5rem,5vw,4rem) clamp(1.25rem,2.5vw,2.5rem) clamp(2.5rem,5vw,4rem);
   border-right: 1px solid rgba(255,255,255,0.13);
+  background: rgba(10,20,16,0.22);
   transition: background 0.3s;
 }
 /* First card aligns with global left margin */
@@ -719,7 +720,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   transform-origin: center center;
   will-change: transform;
   transition: filter 0.05s linear;
-  filter: brightness(var(--hw-bright, 0.6)) contrast(var(--hw-contrast, 1.05));
+  filter: brightness(var(--hw-bright, 0.82)) contrast(var(--hw-contrast, 1.05));
 }
 
 /* Scrim */
@@ -727,8 +728,8 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg,
-    rgba(8,14,10, var(--hw-scrim, 0.55)) 0%,
-    rgba(8,14,10, 0.32) 100%);
+    rgba(8,14,10, var(--hw-scrim, 0.32)) 0%,
+    rgba(8,14,10, 0.18) 100%);
   pointer-events: none;
 }
 
@@ -1174,10 +1175,10 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   content: '';
   position: absolute;
   inset: -80%;
-  background: conic-gradient(from 0deg at 38% 55%,#162614 0deg,#2E4D2A 40deg,#5C7A5E 85deg,#3A5C3A 125deg,#0A1410 175deg,#1A2E1A 215deg,#E8631A 250deg,#2A3A28 280deg,#4A6E48 318deg,#162614 360deg);
-  filter: blur(52px);
+  background: conic-gradient(from 0deg at 38% 55%,#1E3A1C 0deg,#3C7A3E 40deg,#7FC77A 85deg,#4E8C4E 125deg,#12241A 175deg,#234A22 215deg,#FF7A29 250deg,#345C30 280deg,#5FA860 318deg,#1E3A1C 360deg);
+  filter: blur(40px);
   animation: heroCW 32s linear infinite;
-  opacity: 0.72;
+  opacity: 0.85;
   will-change: transform;
   z-index: 0;
   pointer-events: none;
@@ -1186,10 +1187,10 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   content: '';
   position: absolute;
   inset: -80%;
-  background: conic-gradient(from 180deg at 62% 40%,#0A1410 0deg,#E8631A 28deg,#2E3D2F 70deg,#4A6E4A 115deg,#0A1410 165deg,#5C7A5E 205deg,#1A2A1A 252deg,#3A5030 298deg,#0A1410 360deg);
-  filter: blur(68px);
+  background: conic-gradient(from 180deg at 62% 40%,#12241A 0deg,#FF8A3D 28deg,#3A5238 70deg,#5FA85F 115deg,#12241A 165deg,#7FC77A 205deg,#234522 252deg,#4E7A42 298deg,#12241A 360deg);
+  filter: blur(52px);
   animation: heroCCW 24s linear infinite;
-  opacity: 0.6;
+  opacity: 0.65;
   will-change: transform;
   z-index: 0;
   pointer-events: none;
@@ -1198,7 +1199,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(10,20,16,0.5);
+  background: rgba(10,20,16,0.32);
 }
 .cta-inner {
   position: relative;
@@ -2586,9 +2587,9 @@ function toggleEcosystem() {
     const bgT      = ease(clamp(p / 0.10, 0, 1));
     const scale    = lerp(1.00, 1.08, p);          // 0→8% zoom, slightly more
     const parallax = (p * 3.0).toFixed(2);          // 0→3% drift
-    const bright   = lerp(0.62, 0.50, bgT);         // richer dark
+    const bright   = lerp(0.85, 0.72, bgT);         // richer, brighter
     const contrast = lerp(1.05, 1.15, bgT);         // more contrast
-    const scrim    = lerp(0.42, 0.64, bgT);
+    const scrim    = lerp(0.25, 0.4, bgT);
 
     bg.style.transform = `scale(${scale.toFixed(4)}) translateY(-${parallax}%)`;
     bg.style.filter    = `brightness(${bright.toFixed(3)}) contrast(${contrast.toFixed(3)})`;

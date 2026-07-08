@@ -113,20 +113,20 @@ nav.nav-scrolled { background: rgba(14,26,18,0.92); backdrop-filter: blur(12px);
   content: '';
   position: absolute;
   inset: -80%;
-  background: conic-gradient(from 0deg at 38% 55%,#162614 0deg,#2E4D2A 40deg,#5C7A5E 85deg,#3A5C3A 125deg,#0A1410 175deg,#1A2E1A 215deg,#E8631A 250deg,#2A3A28 280deg,#4A6E48 318deg,#162614 360deg);
-  filter: blur(52px);
+  background: conic-gradient(from 0deg at 38% 55%,#1E3A1C 0deg,#3C7A3E 40deg,#7FC77A 85deg,#4E8C4E 125deg,#12241A 175deg,#234A22 215deg,#FF7A29 250deg,#345C30 280deg,#5FA860 318deg,#1E3A1C 360deg);
+  filter: blur(40px);
   animation: heroCW 32s linear infinite;
-  opacity: .72;
+  opacity: .85;
   will-change: transform;
 }
 .hero-bg::after {
   content: '';
   position: absolute;
   inset: -80%;
-  background: conic-gradient(from 180deg at 62% 40%,#0A1410 0deg,#E8631A 28deg,#2E3D2F 70deg,#4A6E4A 115deg,#0A1410 165deg,#5C7A5E 205deg,#1A2A1A 252deg,#3A5030 298deg,#0A1410 360deg);
-  filter: blur(68px);
+  background: conic-gradient(from 180deg at 62% 40%,#12241A 0deg,#FF8A3D 28deg,#3A5238 70deg,#5FA85F 115deg,#12241A 165deg,#7FC77A 205deg,#234522 252deg,#4E7A42 298deg,#12241A 360deg);
+  filter: blur(52px);
   animation: heroCCW 24s linear infinite;
-  opacity: .55;
+  opacity: .65;
   will-change: transform;
 }
 @keyframes heroCW  { from{transform:rotate(0deg)}   to{transform:rotate(360deg)} }
@@ -176,7 +176,7 @@ nav.nav-scrolled { background: rgba(14,26,18,0.92); backdrop-filter: blur(12px);
   margin-left: 0;
   max-width: 14ch;
 }
-.hero-h1 .dim { color: rgba(255,255,255,0.38); }
+.hero-h1 .dim { color: #fff; }
 .hero-sub {
   font-weight: 300;
   font-size: clamp(0.9rem, 1.3vw, 1.05rem);
@@ -1711,7 +1711,7 @@ footer::before {
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo"><img src="images/img-003-b96b2324a598.webp" alt="Eir" style="height:22px;filter:brightness(0) invert(1);"></div>
+  <div class="nav-logo"><img src="images/img-003-b96b2324a598.webp" alt="Eir" style="height:28px;filter:brightness(0) invert(1);"></div>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About Eir</a></li>
@@ -1728,9 +1728,8 @@ footer::before {
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-bg"></div>
-  <p class="hero-eyebrow">Insurtech · Licensed carrier · Europe</p>
   <div class="hero-body">
-    <h1 class="hero-h1">Scalable<br>insurance<br><span class="dim">products</span></h1>
+    <h1 class="hero-h1">Scalable<br>insurance<br>products</h1>
     <p class="hero-sub">Tailored to ambitious distribution partners.</p>
     <div class="hero-btns">
       <a href="how-we-work.html#capabilities" class="btn-primary">Explore capabilities <span class="dot"></span></a>

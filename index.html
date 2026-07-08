@@ -566,23 +566,19 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   z-index: 2;
   display: grid;
   grid-template-columns: repeat(4,1fr);
-  /* vertical dividers via box-shadow on each card */
+  gap: 1rem;
+  padding: 0 clamp(1.25rem,5vw,3rem);
 }
 .offer-card-v {
   display: flex;
   flex-direction: column;
   transform: translateY(16px);
-  transition: transform 0.65s 0.05s cubic-bezier(0.16,1,0.3,1);
-  padding: clamp(2.5rem,5vw,4rem) clamp(1.25rem,2.5vw,2.5rem) clamp(2.5rem,5vw,4rem);
-  border-right: 1px solid rgba(255,255,255,0.13);
-  transition: background 0.3s;
+  transition: transform 0.65s 0.05s cubic-bezier(0.16,1,0.3,1), background 0.3s;
+  padding: clamp(2rem,4vw,3rem) clamp(1.5rem,2.5vw,2.25rem);
+  background: rgba(8,14,10,0.55);
+  border-radius: 16px;
 }
-/* First card aligns with global left margin */
-.offer-card-v:first-child {
-  padding-left: clamp(1.25rem,5vw,3rem);
-}
-.offer-card-v:last-child { border-right: none; }
-.offer-card-v:hover { background: rgba(8,14,10,0.6); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); }
+.offer-card-v:hover { background: rgba(8,14,10,0.75); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); }
 
 .offer-card-icon {
   width: 50px;
@@ -592,26 +588,18 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   opacity: 0.92;
   flex-shrink: 0;
 }
-.offer-card-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.44rem;
-  letter-spacing: 0.22em;
-  color: var(--orange);
-  display: block;
-  margin-bottom: 1rem;
-}
 .offer-card-v h3 {
   font-weight: 300;
-  font-size: clamp(1rem,1.4vw,1.25rem);
+  font-size: clamp(1.2rem,1.8vw,1.5rem);
   letter-spacing: -0.01em;
   color: #fff;
   margin-bottom: 0.8rem;
   line-height: 1.15;
 }
 .offer-card-v p {
-  font-size: 0.82rem;
+  font-size: 0.98rem;
   line-height: 1.65;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.72);
   flex: 1;
 }
 /* Bottom accent line on hover */
@@ -1476,8 +1464,6 @@ footer::before {
 
   /* Offer */
   .offer-cards-visual { grid-template-columns: 1fr 1fr; }
-  .offer-card-v { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-  .offer-card-v:last-child { border-bottom: none; }
   .products-dark-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
   .product-tile p { font-size: 0.82rem; }
 
@@ -1841,8 +1827,7 @@ footer::before {
     </video>
 
     <div class="offer-header">
-      <p class="eyebrow offer-eyebrow-anim" style="color:var(--sage)">Capabilities</p>
-      <h2 class="section-h2 offer-headline-anim" style="color:#fff">Built for partners who<br>want to move faster.</h2>
+      <h2 class="section-h2 offer-headline-anim" style="color:#fff">Built for partners who<br>want to move faster</h2>
     </div>
 
     <div class="offer-cards-visual" style="transition-delay:0.15s">
@@ -1852,7 +1837,6 @@ footer::before {
           <rect x="24" y="26" width="48" height="58" rx="8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
           <rect x="52" y="48" width="52" height="54" rx="8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span class="offer-card-num">01</span>
         <h3>White label</h3>
         <p>Your brand.<br>Invisible infrastructure.</p>
       </div>
@@ -1869,7 +1853,6 @@ footer::before {
           <path d="M91 48V80" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M64 36V92" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/>
         </svg>
-        <span class="offer-card-num">02</span>
         <h3>Open APIs</h3>
         <p>Connect once.<br>Launch faster.</p>
       </div>
@@ -1880,7 +1863,6 @@ footer::before {
           <rect x="36" y="54" width="72" height="22" rx="8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
           <rect x="22" y="81" width="72" height="22" rx="8" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span class="offer-card-num">03</span>
         <h3>Low cost operations</h3>
         <p>Automated by design.</p>
       </div>
@@ -1891,14 +1873,13 @@ footer::before {
           <path d="M66 39L96 91H36L66 39Z" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
           <rect x="78" y="35" width="28" height="68" rx="7" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span class="offer-card-num">04</span>
         <h3>Full flexibility</h3>
         <p>Configured around<br>your needs.</p>
       </div>
 
     </div>
 
-    <div class="offer-sub-row" style="display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:2rem;transition-delay:0.25s">
+    <div class="offer-sub-row" style="display:flex;flex-direction:column;align-items:flex-start;gap:1.5rem;transition-delay:0.25s">
       <p class="offer-sub-text offer-sub-text-anim" style="margin-bottom:0;">We handle licensing, risk, compliance and technology, so you can focus on your customers.</p>
       <a href="how-we-work.html#capabilities" class="btn-secondary offer-cta-anim" style="white-space:nowrap;flex-shrink:0;">Explore capabilities →</a>
     </div>

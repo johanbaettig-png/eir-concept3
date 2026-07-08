@@ -772,107 +772,77 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   color: rgba(255,255,255,0.75);
 }
 
-/* Steps */
+/* Steps — centered spotlight, one at a time */
 .how-steps-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  position: relative;
+  min-height: clamp(210px, 26vw, 300px);
+  margin-top: 1rem;
 }
 
 .how-step-item {
-  padding: 1.15rem 0;
-  border-top: 1px solid rgba(255,255,255,0.28);
-  opacity: 0;
-  transform: translateY(12px);
-  /* transitions set by JS inline for scroll-scrub */
-}
-
-.how-step-inner {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1.4rem;
-  align-items: start;
-}
-
-.how-step-line-wrap {
-  padding-top: 0.5rem;
+  position: absolute;
+  inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  min-width: 4rem;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.94) translateY(14px);
+  pointer-events: none;
+  /* opacity/transform driven by JS on scroll */
 }
 
 .how-step-num-lbl {
   font-family: 'DM Mono', monospace;
-  font-size: 0.68rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.24em;
   color: var(--orange);
-  letter-spacing: 0.05em;
-  flex-shrink: 0;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.how-step-line {
-  height: 1px;
-  width: 0;
-  background: var(--orange);
-  max-width: 2rem;
-  transition: width 0.7s cubic-bezier(0.16,1,0.3,1);
-}
-.how-step-item[data-step="0"] .how-step-line {
-  display: none;
-}
-
-.how-step-content {
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
+  margin-bottom: 1rem;
+  display: block;
 }
 
 .how-step-content h3 {
-  font-weight: 400;
-  font-size: clamp(0.9rem, 1.3vw, 1rem);
-  margin-bottom: 0.22rem;
-  color: rgba(255,255,255,0.92);
+  font-weight: 300;
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  line-height: 1.15;
+  margin-bottom: 0.7rem;
+  color: #fff;
 }
 
 .how-step-content p {
-  font-size: 0.8rem;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.65);
-  max-width: 38ch;
+  font-size: clamp(0.9rem, 1.2vw, 1.02rem);
+  line-height: 1.6;
+  color: rgba(255,255,255,0.68);
+  max-width: 40ch;
+  margin: 0 auto;
 }
 
-/* Step states */
-.hw-step-visible .how-step-num-lbl { opacity: 1; }
-.hw-step-visible .how-step-line { width: 2rem; opacity: 0.45; }
-.hw-step-active .how-step-line { width: 2rem; opacity: 0.45; }
-.hw-step-done .how-step-line { width: 2rem; opacity: 0.45; }
-.hw-step-visible .how-step-content,
-.hw-step-active .how-step-content,
-.hw-step-done .how-step-content { opacity: 1; transform: translateX(0); }
-
-.hw-step-secondary {
-  opacity: 0.62 !important;
-  filter: blur(0px) !important;
-  transform: translateY(0) !important;
-  border-color: rgba(255,255,255,0.22) !important;
+/* Progress dots */
+.how-progress-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+.how-progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transition: background 0.3s, transform 0.3s;
+}
+.how-progress-dot.is-active {
+  background: var(--orange);
+  transform: scale(1.3);
 }
 
-.hw-step-active {
-  opacity: 1 !important;
-  filter: blur(0px) !important;
-  transform: translateY(0) !important;
-  border-color: rgba(255,255,255,0.22) !important;
+/* CTA row fades in once the sequence completes */
+.how-cta-row {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
-
-.hw-step-done {
-  opacity: 1 !important;
-  filter: blur(0px) !important;
-  transform: translateY(0) !important;
-  border-color: rgba(255,255,255,0.15) !important;
-}
-
 
 /* ── PARTNERS ── */
 .partners-section { background: var(--bg); color: var(--ink); }
@@ -1921,44 +1891,35 @@ footer::before {
       <div class="how-steps-list">
 
         <div class="how-step-item" data-step="0">
-          <div class="how-step-inner">
-            <div class="how-step-line-wrap">
-              <span class="how-step-num-lbl">01</span>
-              <span class="how-step-line"></span>
-            </div>
-            <div class="how-step-content">
-              <h3>We map your needs.</h3>
-              <p>Distribution, customers and product ambitions.</p>
-            </div>
+          <span class="how-step-num-lbl">01</span>
+          <div class="how-step-content">
+            <h3>We map your needs</h3>
+            <p>Distribution, customers and product ambitions.</p>
           </div>
         </div>
 
         <div class="how-step-item" data-step="1">
-          <div class="how-step-inner">
-            <div class="how-step-line-wrap">
-              <span class="how-step-num-lbl">02</span>
-              <span class="how-step-line"></span>
-            </div>
-            <div class="how-step-content">
-              <h3>We configure and connect.</h3>
-              <p>Products, APIs and operations tailored to your model.</p>
-            </div>
+          <span class="how-step-num-lbl">02</span>
+          <div class="how-step-content">
+            <h3>We configure and connect</h3>
+            <p>Products, APIs and operations tailored to your model.</p>
           </div>
         </div>
 
         <div class="how-step-item" data-step="2">
-          <div class="how-step-inner">
-            <div class="how-step-line-wrap">
-              <span class="how-step-num-lbl">03</span>
-              <span class="how-step-line"></span>
-            </div>
-            <div class="how-step-content">
-              <h3>You go live.</h3>
-              <p>Licensing, risk and compliance handled across markets.</p>
-            </div>
+          <span class="how-step-num-lbl">03</span>
+          <div class="how-step-content">
+            <h3>You go live</h3>
+            <p>Licensing, risk and compliance handled across markets.</p>
           </div>
         </div>
 
+      </div>
+
+      <div class="how-progress-dots">
+        <span class="how-progress-dot" data-dot="0"></span>
+        <span class="how-progress-dot" data-dot="1"></span>
+        <span class="how-progress-dot" data-dot="2"></span>
       </div>
 
       <div class="how-cta-row" style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:2.5rem;">
@@ -2521,6 +2482,8 @@ function toggleEcosystem() {
   const headline = section.querySelector('.how-headline-hw');
   const sub      = section.querySelector('.how-sub-hw');
   const steps    = Array.from(section.querySelectorAll('.how-step-item'));
+  const dots     = Array.from(section.querySelectorAll('.how-progress-dot'));
+  const ctaRow   = section.querySelector('.how-cta-row');
 
   // ── Helpers ──
   function lerp(a, b, t) { return a + (b - a) * t; }
@@ -2548,34 +2511,43 @@ function toggleEcosystem() {
     el.style.transform = `translateY(${lerp(18, 0, e).toFixed(2)}px)`;
   }
 
-  // Apply opacity+blur+translateY to a step item
-  function applyStep(el, opacity, ty) {
-    el.style.opacity   = opacity.toFixed(3);
-    el.style.transform = `translateY(${ty.toFixed(2)}px)`;
-    // Lock divider line opacity once step becomes visible — never let it change after
-    const line = el.querySelector('.how-step-line');
-    if (line) {
-      // Line only shows when step is visible (opacity > 0.3); then stays locked at 0.45
-      line.style.opacity = opacity > 0.3 ? '0.45' : '0';
-    }
+  // Simple fade+lift, no blur — used for the CTA row
+  function applyFade(el, t) {
+    if (!el) return;
+    const e = ease(t);
+    el.style.opacity   = e.toFixed(3);
+    el.style.transform = `translateY(${lerp(10, 0, e).toFixed(2)}px)`;
   }
 
-  // ── Phase thresholds — fluid, overlapping, releases quickly ──
-  // Header:    0.00 → 0.10
-  // Step 01:   0.08 → 0.20
-  // Step 02:   0.22 → 0.34
-  // Step 03:   0.36 → 0.50
-  // All done:  0.60   ← pin releases here (320vh × 0.60 = 192vh total scroll)
+  // Crossfade window for a single spotlight step:
+  // fades in over [inStart, fullStart], holds at 1 over [fullStart, fullEnd],
+  // fades out over [fullEnd, outEnd] — unless outEnd is null, in which case it
+  // stays at 1 forever after fullEnd (used for the last step).
+  function trapezoid(p, inStart, fullStart, fullEnd, outEnd) {
+    if (p <= inStart) return 0;
+    if (p < fullStart) return ease(norm(p, inStart, fullStart));
+    if (outEnd == null || p <= fullEnd) return 1;
+    if (p < outEnd) return 1 - ease(norm(p, fullEnd, outEnd));
+    return 0;
+  }
 
+  function applySpotlight(el, opacity) {
+    el.style.opacity = opacity.toFixed(3);
+    el.style.transform = `scale(${lerp(0.94, 1, opacity).toFixed(3)}) translateY(${lerp(14, 0, opacity).toFixed(2)}px)`;
+    el.style.pointerEvents = opacity > 0.5 ? 'auto' : 'none';
+  }
+
+  // ── Phase thresholds ──
+  // Header reveal:      0.00 → 0.11
+  // Step 01 spotlight:  0.10 → 0.34
+  // Step 02 spotlight:  0.28 → 0.54
+  // Step 03 spotlight:  0.48 → 0.62 (stays, doesn't fade out)
+  // Pin releases:       0.62 — CTA row fades in right after
   const P = {
-    hdrStart: 0.00, hdrEnd: 0.10,
-    s0Start:  0.22, s0End:  0.34,
-    s1Start:  0.36, s1End:  0.46,
-    s2Start:  0.48, s2End:  0.58,
-    allDone:  0.62,
-    s0Active: [0.34, 0.44],
-    s1Active: [0.46, 0.56],
-    s2Active: [0.58, 0.62],
+    s0: [0.10, 0.18, 0.28, 0.34],
+    s1: [0.28, 0.36, 0.48, 0.54],
+    s2: [0.48, 0.56, 0.62, null],
+    allDone: 0.62,
   };
 
   function update() {
@@ -2593,50 +2565,26 @@ function toggleEcosystem() {
     bg.style.filter    = `brightness(${bright.toFixed(3)}) contrast(${contrast.toFixed(3)})`;
     section.style.setProperty('--hw-scrim', scrim.toFixed(3));
 
-    // ── Phase 01: Header — overlapping cascade ──
+    // ── Header — overlapping cascade ──
     applyReveal(eyebrow,  norm(p, 0.00, 0.07));
     applyReveal(headline, norm(p, 0.02, 0.09));
     applyReveal(sub,      norm(p, 0.04, 0.11));
 
-    // ── Steps ──
-    // Step 0
-    const s0t = ease(norm(p, P.s0Start, P.s0End));
-    const s0Active = p >= P.s0Active[0] && p < P.s1Active[0];
-    const s0Done   = p >= P.s1Active[0];
-    const s0Opacity = s0t > 0 ? (s0Done ? 1.0 : s0Active ? 1.0 : lerp(0, 0.7, s0t)) : 0;
-    const s0Secondary = s0Done && p < P.allDone;
-    applyStep(steps[0], s0Secondary ? 0.68 : s0Opacity, lerp(12, 0, s0t));
-    steps[0].classList.toggle('hw-step-visible', s0t > 0);
-    steps[0].classList.toggle('hw-step-active',  s0Active);
-    steps[0].classList.toggle('hw-step-done',    s0Done);
+    // ── Steps — centered spotlight, one in focus at a time ──
+    const opacities = [
+      trapezoid(p, P.s0[0], P.s0[1], P.s0[2], P.s0[3]),
+      trapezoid(p, P.s1[0], P.s1[1], P.s1[2], P.s1[3]),
+      trapezoid(p, P.s2[0], P.s2[1], P.s2[2], P.s2[3]),
+    ];
+    let activeIdx = 0;
+    opacities.forEach((o, i) => {
+      applySpotlight(steps[i], o);
+      if (o > opacities[activeIdx]) activeIdx = i;
+    });
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === activeIdx));
 
-    // Step 1
-    const s1t = ease(norm(p, P.s1Start, P.s1End));
-    const s1Active = p >= P.s1Active[0] && p < P.s2Active[0];
-    const s1Done   = p >= P.s2Active[0];
-    const s1Opacity = s1t > 0 ? (s1Done ? 1.0 : s1Active ? 1.0 : lerp(0, 0.7, s1t)) : 0;
-    const s1Secondary = s1Done && p < P.allDone;
-    applyStep(steps[1], s1Secondary ? 0.68 : s1Opacity, lerp(12, 0, s1t));
-    steps[1].classList.toggle('hw-step-visible', s1t > 0);
-    steps[1].classList.toggle('hw-step-active',  s1Active);
-    steps[1].classList.toggle('hw-step-done',    s1Done);
-
-    // Step 2
-    const s2t = ease(norm(p, P.s2Start, P.s2End));
-    const s2Active = p >= P.s2Active[0] && p < P.allDone;
-    const s2Done   = p >= P.allDone;
-    const s2Opacity = s2t > 0 ? (s2Done ? 1.0 : s2Active ? 1.0 : lerp(0, 0.7, s2t)) : 0;
-    applyStep(steps[2], s2Opacity, lerp(12, 0, s2t));
-    steps[2].classList.toggle('hw-step-visible', s2t > 0);
-    steps[2].classList.toggle('hw-step-active',  s2Active);
-    steps[2].classList.toggle('hw-step-done',    s2Done);
-
-    // When allDone: restore all to full opacity
-    if (p >= P.allDone) {
-      applyStep(steps[0], 1.0, 0);
-      applyStep(steps[1], 1.0, 0);
-      applyStep(steps[2], 1.0, 0);
-    }
+    // ── CTA row — appears once the sequence completes ──
+    applyFade(ctaRow, norm(p, P.allDone, P.allDone + 0.05));
   }
 
   let raf = null;

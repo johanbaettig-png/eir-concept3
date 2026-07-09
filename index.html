@@ -736,18 +736,24 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   pointer-events: none;
 }
 
-/* Content */
+/* Content — starts centered mid-screen, then glides up to make room for the steps */
 .how-inner {
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 2;
-  padding: clamp(6rem, 12vw, 9rem) clamp(1.25rem, 5vw, 3rem) 0;
-  max-width: 700px;
-  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
   text-align: center;
+  /* top % is driven by JS on scroll */
 }
 
 /* Header */
-.how-header { margin-bottom: 2.8rem; }
+.how-header {
+  max-width: min(60%, 760px);
+  margin: 0 auto;
+}
 
 .how-eyebrow-hw {
   opacity: 0;
@@ -770,23 +776,38 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   color: rgba(255,255,255,0.75);
 }
 
-/* Steps — full-bleed centered spotlight, one at a time, independent of the header column */
+/* Steps — centered spotlight, one at a time, in the lower two-fifths of the section
+   (the header glides up out of this zone before the steps appear) */
 .how-spotlight {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  top: 40%;
+  bottom: 11%;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 clamp(1.5rem, 6vw, 7rem);
-  pointer-events: none;
+  padding: 0 clamp(1.25rem, 5vw, 3rem);
+}
+
+.how-step-stage {
+  position: relative;
+  width: 100%;
+  min-height: clamp(220px, 24vw, 300px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .how-step-item {
   position: absolute;
   left: 0;
   right: 0;
+  max-width: min(60%, 760px);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -831,27 +852,25 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 
 .how-step-content h3 {
   font-weight: 300;
-  font-size: clamp(2.8rem, 6vw, 5.4rem);
-  line-height: 1.05;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.15;
   letter-spacing: -0.01em;
-  margin-bottom: 1.1rem;
+  margin-bottom: 0.6rem;
   color: #fff;
 }
 
 .how-step-content p {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
   line-height: 1.6;
   color: rgba(255,255,255,0.72);
   max-width: 42ch;
   margin: 0 auto;
 }
 
-/* Progress dots */
+/* Progress dots — sit right below the step stage */
 .how-progress-dots {
-  position: absolute;
-  bottom: clamp(2rem, 5vw, 3rem);
-  left: 0;
-  right: 0;
+  position: relative;
+  margin-top: 1.4rem;
   display: flex;
   justify-content: center;
   gap: 0.6rem;
@@ -868,12 +887,15 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   transform: scale(1.3);
 }
 
-/* CTA row — anchored bottom-left, fades in once the sequence completes */
+/* CTA row — centered at the very bottom, fades in once the sequence completes */
 .how-cta-row {
   position: absolute;
   z-index: 3;
-  left: clamp(1.5rem, 6vw, 7rem);
-  bottom: clamp(2.5rem, 6vw, 4rem);
+  left: 0;
+  right: 0;
+  bottom: clamp(2rem, 5vw, 3rem);
+  display: flex;
+  justify-content: center;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -1925,27 +1947,29 @@ footer::before {
 
     <div class="how-spotlight">
 
-      <div class="how-step-item" data-step="0">
-        <span class="how-step-num-lbl">01</span>
-        <div class="how-step-content">
-          <h3>We map your needs</h3>
-          <p>Distribution, customers and product ambitions.</p>
+      <div class="how-step-stage">
+        <div class="how-step-item" data-step="0">
+          <span class="how-step-num-lbl">1</span>
+          <div class="how-step-content">
+            <h3>We map your needs</h3>
+            <p>Distribution, customers and product ambitions.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="how-step-item" data-step="1">
-        <span class="how-step-num-lbl">02</span>
-        <div class="how-step-content">
-          <h3>We configure and connect</h3>
-          <p>Products, APIs and operations tailored to your model.</p>
+        <div class="how-step-item" data-step="1">
+          <span class="how-step-num-lbl">2</span>
+          <div class="how-step-content">
+            <h3>We configure and connect</h3>
+            <p>Products, APIs and operations tailored to your model.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="how-step-item" data-step="2">
-        <span class="how-step-num-lbl">03</span>
-        <div class="how-step-content">
-          <h3>You go live</h3>
-          <p>Licensing, risk and compliance handled across markets.</p>
+        <div class="how-step-item" data-step="2">
+          <span class="how-step-num-lbl">3</span>
+          <div class="how-step-content">
+            <h3>You go live</h3>
+            <p>Licensing, risk and compliance handled across markets.</p>
+          </div>
         </div>
       </div>
 
@@ -1957,7 +1981,7 @@ footer::before {
 
     </div>
 
-    <div class="how-cta-row" style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+    <div class="how-cta-row" style="gap:1.5rem;flex-wrap:wrap;">
       <a href="how-we-work.html" class="btn-secondary" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.75);">More about how we work →</a>
       <a href="about.html" class="btn-secondary" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.75);">About Eir →</a>
     </div>
@@ -2512,6 +2536,7 @@ function toggleEcosystem() {
   if (!spacer || !section) return;
 
   const bg       = section.querySelector('.how-bg');
+  const inner    = section.querySelector('.how-inner');
   const eyebrow  = section.querySelector('.how-eyebrow-hw');
   const headline = section.querySelector('.how-headline-hw');
   const sub      = section.querySelector('.how-sub-hw');
@@ -2572,17 +2597,22 @@ function toggleEcosystem() {
   }
 
   // ── Phase thresholds ──
-  // Header reveal:      0.00 → 0.11
-  // Step 01 spotlight:  0.10 → 0.34
-  // Step 02 spotlight:  0.28 → 0.54
-  // Step 03 spotlight:  0.48 → 0.62 (stays, doesn't fade out)
-  // Pin releases:       0.62 — CTA row fades in right after
+  // Header fades in centered:     0.00 → 0.08
+  // Header dwell (read time):     0.08 → 0.10
+  // Header glides up to rest:     0.10 → 0.24
+  // Step 1 spotlight:             0.20 → 0.42
+  // Step 2 spotlight:             0.36 → 0.58
+  // Step 3 spotlight:             0.58 → 0.72 (stays, doesn't fade out)
+  // Pin releases:                 0.72 — CTA row fades in right after
   const P = {
-    s0: [0.10, 0.18, 0.28, 0.34],
-    s1: [0.28, 0.36, 0.48, 0.54],
-    s2: [0.48, 0.56, 0.62, null],
-    allDone: 0.62,
+    headerShift: [0.10, 0.24],
+    s0: [0.20, 0.27, 0.36, 0.42],
+    s1: [0.36, 0.43, 0.52, 0.58],
+    s2: [0.58, 0.64, 0.72, null],
+    allDone: 0.72,
   };
+  const HEADER_TOP_START = 50; // vertically centered
+  const HEADER_TOP_END   = 18; // near the top, out of the steps' way
 
   function update() {
     const p = getP();
@@ -2599,10 +2629,14 @@ function toggleEcosystem() {
     bg.style.filter    = `brightness(${bright.toFixed(3)}) contrast(${contrast.toFixed(3)})`;
     section.style.setProperty('--hw-scrim', scrim.toFixed(3));
 
-    // ── Header — overlapping cascade ──
+    // ── Header — fade in centered, dwell, then glide up ──
     applyReveal(eyebrow,  norm(p, 0.00, 0.07));
     applyReveal(headline, norm(p, 0.02, 0.09));
     applyReveal(sub,      norm(p, 0.04, 0.11));
+    if (inner) {
+      const shiftT = ease(norm(p, P.headerShift[0], P.headerShift[1]));
+      inner.style.top = `${lerp(HEADER_TOP_START, HEADER_TOP_END, shiftT).toFixed(2)}%`;
+    }
 
     // ── Steps — centered spotlight, one in focus at a time ──
     const opacities = [
@@ -2618,7 +2652,7 @@ function toggleEcosystem() {
     dots.forEach((d, i) => d.classList.toggle('is-active', i === activeIdx));
 
     // ── CTA row — appears once the sequence completes ──
-    applyFade(ctaRow, norm(p, P.allDone, P.allDone + 0.05));
+    applyFade(ctaRow, norm(p, P.allDone, P.allDone + 0.06));
   }
 
   let raf = null;

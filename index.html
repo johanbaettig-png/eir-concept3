@@ -700,7 +700,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 /* ── HOW WE WORK — scroll storytelling ── */
 
 .how-pin-spacer {
-  height: 175vh;
+  height: 320vh;
   position: relative;
 }
 
@@ -782,8 +782,8 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   position: absolute;
   left: 0;
   right: 0;
-  top: 28%;
-  bottom: 8%;
+  top: 20%;
+  bottom: 6%;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -795,7 +795,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 .how-step-stage {
   position: relative;
   width: 100%;
-  min-height: clamp(340px, 36vw, 480px);
+  min-height: clamp(300px, 30vw, 420px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -860,10 +860,10 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 }
 
 .how-step-content p {
-  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
-  line-height: 1.5;
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.65;
   color: rgba(255,255,255,0.72);
-  max-width: 56ch;
+  max-width: 46ch;
   margin: 0 auto;
 }
 
@@ -2612,11 +2612,9 @@ function toggleEcosystem() {
     allDone: 0.96,
   };
   const HEADER_TOP_START = 50; // vertically centered
-  const HEADER_TOP_END   = 18; // near the top, out of the steps' way
+  const HEADER_TOP_END   = 10; // near the top, out of the steps' way
 
-  function update() {
-    const p = getP();
-
+  function render(p) {
     // ── Background: scale 1.00→1.08, darken, parallax drift ──
     const bgT      = ease(clamp(p / 0.10, 0, 1));
     const scale    = lerp(1.00, 1.08, p);          // 0→8% zoom, slightly more
@@ -2655,11 +2653,18 @@ function toggleEcosystem() {
     applyFade(ctaRow, norm(p, P.allDone, P.allDone + 0.04));
   }
 
-  let raf = null;
-  window.addEventListener('scroll', () => {
-    if (!raf) raf = requestAnimationFrame(() => { update(); raf = null; });
-  }, { passive: true });
-  requestAnimationFrame(update);
+  // ── Damped scroll progress — content trails the scroll slightly for a
+  // heavier, less jittery feel instead of snapping 1:1 to scroll position ──
+  let currentP = getP();
+  let rafId = null;
+  function loop() {
+    const targetP = getP();
+    currentP += (targetP - currentP) * 0.065;
+    if (Math.abs(targetP - currentP) < 0.0005) currentP = targetP;
+    render(currentP);
+    rafId = requestAnimationFrame(loop);
+  }
+  loop();
 })();
 
 

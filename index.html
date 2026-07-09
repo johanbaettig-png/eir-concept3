@@ -738,20 +738,13 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 
 /* Intro slide — reuses the exact same centered spotlight slot as the numbered
    steps below; it's just the first "slide" in the same sequence */
-.how-intro-item h2 {
+.how-slide-head h2 {
   font-weight: 300;
   font-size: clamp(2.6rem, 5.5vw, 4.6rem);
   line-height: 1.08;
   letter-spacing: -0.01em;
   margin-bottom: 1rem;
   color: #fff;
-}
-.how-intro-item p {
-  font-size: clamp(0.9rem, 1.2vw, 1rem);
-  line-height: 1.65;
-  color: rgba(255,255,255,0.75);
-  max-width: 46ch;
-  margin: 0 auto;
 }
 
 /* Steps — centered spotlight, one at a time, in the lower two-fifths of the section
@@ -782,17 +775,36 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 
 .how-step-item {
   position: absolute;
-  left: 0;
-  right: 0;
+  inset: 0;
   max-width: min(84%, 980px);
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
   opacity: 0;
   transform: scale(0.94) translateY(14px);
   /* opacity/transform driven by JS on scroll */
+}
+
+/* Shared anchor line: every slide's heading block bottom-aligns to this line,
+   and every slide's subtext top-aligns right below it — so the description
+   always sits on the same row, and the intro sits one heading-line higher
+   than dead-center to act as the guide the numbered steps line up against. */
+.how-step-item {
+  --how-anchor-shift: clamp(2.2rem, 4.8vw, 4rem);
+}
+.how-slide-head {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(50% + var(--how-anchor-shift));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.how-slide-sub {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - var(--how-anchor-shift) + 0.9rem);
 }
 
 .how-step-num-lbl {
@@ -828,16 +840,16 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   animation: statTextGradient3 20s ease-in-out infinite alternate;
 }
 
-.how-step-content h3 {
+.how-slide-head h3 {
   font-weight: 300;
   font-size: clamp(3.2rem, 6.2vw, 4.6rem);
   line-height: 1.1;
   letter-spacing: -0.01em;
-  margin-bottom: 1.2rem;
+  margin: 0;
   color: #fff;
 }
 
-.how-step-content p {
+.how-slide-sub p {
   font-size: clamp(0.9rem, 1.2vw, 1rem);
   line-height: 1.65;
   color: rgba(255,255,255,0.72);
@@ -1925,30 +1937,40 @@ footer::before {
 
       <div class="how-step-stage">
         <div class="how-step-item how-intro-item" data-step="intro">
-          <h2>From conversation<br>to live product</h2>
-          <p>From needs mapping to configuration, integration and launch with speed and precision.</p>
+          <div class="how-slide-head">
+            <h2>From conversation<br>to live product</h2>
+          </div>
+          <div class="how-slide-sub">
+            <p>From needs mapping to configuration, integration and launch with speed and precision.</p>
+          </div>
         </div>
 
         <div class="how-step-item" data-step="0">
-          <span class="how-step-num-lbl">1</span>
-          <div class="how-step-content">
+          <div class="how-slide-head">
+            <span class="how-step-num-lbl">1</span>
             <h3>We map your needs</h3>
+          </div>
+          <div class="how-slide-sub">
             <p>Distribution, customers and product ambitions.</p>
           </div>
         </div>
 
         <div class="how-step-item" data-step="1">
-          <span class="how-step-num-lbl">2</span>
-          <div class="how-step-content">
+          <div class="how-slide-head">
+            <span class="how-step-num-lbl">2</span>
             <h3>We configure and connect</h3>
+          </div>
+          <div class="how-slide-sub">
             <p>Products, APIs and operations tailored to your model.</p>
           </div>
         </div>
 
         <div class="how-step-item" data-step="2">
-          <span class="how-step-num-lbl">3</span>
-          <div class="how-step-content">
+          <div class="how-slide-head">
+            <span class="how-step-num-lbl">3</span>
             <h3>You go live</h3>
+          </div>
+          <div class="how-slide-sub">
             <p>Licensing, risk and compliance handled across markets.</p>
           </div>
         </div>

@@ -751,7 +751,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 
 /* Header */
 .how-header {
-  max-width: min(60%, 760px);
+  max-width: min(84%, 980px);
   margin: 0 auto;
 }
 
@@ -782,8 +782,8 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   position: absolute;
   left: 0;
   right: 0;
-  top: 40%;
-  bottom: 11%;
+  top: 28%;
+  bottom: 8%;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -795,7 +795,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 .how-step-stage {
   position: relative;
   width: 100%;
-  min-height: clamp(220px, 24vw, 300px);
+  min-height: clamp(340px, 36vw, 480px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -806,7 +806,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   position: absolute;
   left: 0;
   right: 0;
-  max-width: min(60%, 760px);
+  max-width: min(84%, 980px);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -852,18 +852,18 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 
 .how-step-content h3 {
   font-weight: 300;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  line-height: 1.15;
+  font-size: clamp(3.2rem, 6.2vw, 4.6rem);
+  line-height: 1.1;
   letter-spacing: -0.01em;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1.2rem;
   color: #fff;
 }
 
 .how-step-content p {
-  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
-  line-height: 1.6;
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  line-height: 1.5;
   color: rgba(255,255,255,0.72);
-  max-width: 42ch;
+  max-width: 56ch;
   margin: 0 auto;
 }
 
@@ -2597,19 +2597,19 @@ function toggleEcosystem() {
   }
 
   // ── Phase thresholds ──
-  // Header fades in centered:     0.00 → 0.08
-  // Header dwell (read time):     0.08 → 0.10
-  // Header glides up to rest:     0.10 → 0.24
-  // Step 1 spotlight:             0.20 → 0.42
-  // Step 2 spotlight:             0.36 → 0.58
-  // Step 3 spotlight:             0.58 → 0.72 (stays, doesn't fade out)
-  // Pin releases:                 0.72 — CTA row fades in right after
+  // Header fades in centered:     0.00 → 0.06
+  // Header dwell (long read time): 0.06 → 0.32
+  // Header glides up to rest:     0.32 → 0.44
+  // Step 1 spotlight:             0.40 → 0.62
+  // Step 2 spotlight:             0.62 → 0.84
+  // Step 3 spotlight:             0.84 → 0.96 (stays, doesn't fade out)
+  // Pin releases:                 0.96 — CTA row fades in right after
   const P = {
-    headerShift: [0.10, 0.24],
-    s0: [0.20, 0.27, 0.36, 0.42],
-    s1: [0.36, 0.43, 0.52, 0.58],
-    s2: [0.58, 0.64, 0.72, null],
-    allDone: 0.72,
+    headerShift: [0.32, 0.44],
+    s0: [0.40, 0.48, 0.56, 0.62],
+    s1: [0.62, 0.70, 0.78, 0.84],
+    s2: [0.84, 0.90, 0.96, null],
+    allDone: 0.96,
   };
   const HEADER_TOP_START = 50; // vertically centered
   const HEADER_TOP_END   = 18; // near the top, out of the steps' way
@@ -2652,7 +2652,7 @@ function toggleEcosystem() {
     dots.forEach((d, i) => d.classList.toggle('is-active', i === activeIdx));
 
     // ── CTA row — appears once the sequence completes ──
-    applyFade(ctaRow, norm(p, P.allDone, P.allDone + 0.06));
+    applyFade(ctaRow, norm(p, P.allDone, P.allDone + 0.04));
   }
 
   let raf = null;

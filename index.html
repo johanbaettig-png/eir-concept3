@@ -700,7 +700,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 /* ── HOW WE WORK — scroll storytelling ── */
 
 .how-pin-spacer {
-  height: 320vh;
+  height: 420vh;
   position: relative;
 }
 
@@ -2583,19 +2583,15 @@ function toggleEcosystem() {
     el.style.pointerEvents = opacity > 0.5 ? 'auto' : 'none';
   }
 
-  // ── Phase thresholds — one continuous sequence, intro counts as slide 0 ──
-  // Intro fades in:      0.00 → 0.05
-  // Intro dwell (long):  0.05 → 0.28
-  // Step 1 spotlight:    0.28 → 0.48
-  // Step 2 spotlight:    0.48 → 0.68
-  // Step 3 spotlight:    0.68 → 0.92 (stays, doesn't fade out)
-  // Pin releases:        0.92 — CTA row fades in right after
+  // ── Phase thresholds — one continuous sequence of 5 equal beats:
+  // intro, step 1, step 2, step 3, then the CTA row — each gets its own
+  // fade-in + a comparable hold before handing off to the next. ──
   const P = {
-    intro: [0.00, 0.05, 0.28, 0.34],
-    s0:    [0.28, 0.34, 0.42, 0.48],
-    s1:    [0.42, 0.48, 0.62, 0.68],
-    s2:    [0.62, 0.68, 0.92, null],
-    allDone: 0.92,
+    intro: [0.00, 0.04, 0.16, 0.20],
+    s0:    [0.16, 0.20, 0.32, 0.36],
+    s1:    [0.32, 0.36, 0.48, 0.52],
+    s2:    [0.48, 0.52, 0.64, 0.68],
+    cta:   [0.64, 0.68, 0.94, null],
   };
 
   function render(p) {
@@ -2628,8 +2624,8 @@ function toggleEcosystem() {
     }
     dots.forEach((d, i) => d.classList.toggle('is-active', i === activeStepIdx));
 
-    // ── CTA row — appears once the sequence completes ──
-    applySpotlight(ctaRow, norm(p, P.allDone, P.allDone + 0.05));
+    // ── CTA row — its own beat, right after step 3 hands off ──
+    applySpotlight(ctaRow, trapezoid(p, P.cta[0], P.cta[1], P.cta[2], P.cta[3]));
   }
 
   // ── Damped scroll progress — content trails the scroll slightly for a

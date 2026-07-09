@@ -740,8 +740,10 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 .how-inner {
   position: relative;
   z-index: 2;
-  padding: clamp(6rem, 12vw, 9rem) clamp(1.5rem, 6vw, 7rem) 0;
-  max-width: 1000px;
+  padding: clamp(6rem, 12vw, 9rem) clamp(1.25rem, 5vw, 3rem) 0;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* Header */
@@ -764,7 +766,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   filter: blur(4px);
   transform: translateY(16px);
   max-width: 44ch;
-  margin-top: 0.9rem;
+  margin: 0.9rem auto 0;
   color: rgba(255,255,255,0.75);
 }
 
@@ -795,12 +797,36 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 }
 
 .how-step-num-lbl {
-  font-family: 'DM Mono', monospace;
-  font-size: clamp(0.85rem, 1.1vw, 1rem);
-  letter-spacing: 0.32em;
-  color: var(--orange);
-  margin-bottom: 1.4rem;
   display: block;
+  font-weight: 300;
+  font-size: clamp(4.24rem, 9.54vw, 8.48rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.how-step-item[data-step="0"] .how-step-num-lbl {
+  background-image: conic-gradient(from 0deg at 38% 55%,
+    #1E3A1C 0deg, #3C7A3E 40deg, #7FC77A 85deg,
+    #4E8C4E 125deg, #12241A 175deg, #234A22 215deg,
+    #FF7A29 250deg, #345C30 280deg, #5FA860 318deg, #1E3A1C 360deg);
+  animation: statTextGradient1 18s ease-in-out infinite alternate;
+}
+.how-step-item[data-step="1"] .how-step-num-lbl {
+  background-image: conic-gradient(from 180deg at 62% 40%,
+    #12241A 0deg, #FF8A3D 28deg, #3A5238 70deg,
+    #5FA85F 115deg, #12241A 165deg, #7FC77A 205deg,
+    #234522 252deg, #4E7A42 295deg, #FF8A3D 335deg, #12241A 360deg);
+  animation: statTextGradient2 22s ease-in-out infinite alternate;
+}
+.how-step-item[data-step="2"] .how-step-num-lbl {
+  background-image: conic-gradient(from 90deg at 50% 50%,
+    #1E3A1C 0deg, #7FC77A 60deg, #3C7A3E 120deg,
+    #FF7A29 200deg, #12241A 260deg, #3C7A3E 320deg, #1E3A1C 360deg);
+  animation: statTextGradient3 20s ease-in-out infinite alternate;
 }
 
 .how-step-content h3 {

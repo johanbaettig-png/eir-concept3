@@ -969,7 +969,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 
 /* ── MAP ── */
 .map-section {
-  background: #5e7f65;
+  background: #7AA572;
   color: #fff;
   padding: 0;
   position: relative;
@@ -1026,33 +1026,33 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 .market-lists { display:flex; gap:3rem; flex-wrap:wrap; margin-bottom:2rem; }
 .market-group h4 { font-family:'DM Mono',monospace; font-size:0.69rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--orange); margin-bottom:0.7rem; }
 .market-group ul { list-style:none; display:flex; flex-direction:column; gap:0.28rem; }
-.market-group li { font-size:1.23rem; color:rgba(255,255,255,0.65); line-height:1.4; }
+.market-group li { font-size:1.23rem; color:#F6F4F0; line-height:1.4; }
 .map-legend { display:flex; gap:2rem; margin-bottom:2rem; padding:0; border:none; }
-.legend-item { display:flex; align-items:center; gap:0.6rem; font-family:'DM Mono',monospace; font-size:0.69rem; letter-spacing:0.16em; text-transform:uppercase; color:#213123; }
+.legend-item { display:flex; align-items:center; gap:0.6rem; font-family:'DM Mono',monospace; font-size:0.69rem; letter-spacing:0.16em; text-transform:uppercase; color:#263C24; }
 .legend-dot { width:9px; height:9px; border-radius:50%; }
-.legend-dot.live { background:var(--orange); }
-.legend-dot.cross { background:#c2fed1; opacity:0.9; }
-.map-eco-btn { background:none; border:none; cursor:pointer; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.38); padding:0; display:flex; align-items:center; gap:0.6rem; transition:color 0.2s; }
+.legend-dot.live { background:#FF8B31; }
+.legend-dot.cross { background:#2EFF3F; opacity:0.9; }
+.map-eco-btn { background:none; border:none; cursor:pointer; font-family:'DM Mono',monospace; font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(246,244,240,0.38); padding:0; display:flex; align-items:center; gap:0.6rem; transition:color 0.2s; }
 @keyframes arrowDrift {
   0%, 100% { transform: translateX(0); }
   50%       { transform: translateX(3px); }
 }
 @keyframes ecoColorPulse {
-  0%, 100% { color: rgba(255,255,255,0.38); }
-  50%       { color: rgba(255,255,255,0.82); }
+  0%, 100% { color: rgba(246,244,240,0.38); }
+  50%       { color: rgba(246,244,240,0.82); }
 }
 #ecosystemArrow { animation: arrowDrift 2.8s ease-in-out infinite; display:inline-block; }
 .map-eco-btn { animation: ecoColorPulse 2s ease-in-out infinite !important; }
 .map-eco-btn #ecosystemArrow { animation: arrowDrift 2.8s ease-in-out infinite, ecoColorPulse 2s ease-in-out infinite; }
-.map-eco-btn:hover { color:rgba(255,255,255,0.72); }
+.map-eco-btn:hover { color:rgba(246,244,240,0.72); }
 .eco-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem 2.5rem; }
-.eco-cat { font-family:'DM Mono',monospace; font-size:1.23rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#213123; margin-bottom:0.5rem; }
+.eco-cat { font-family:'DM Mono',monospace; font-size:1.23rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#263C24; margin-bottom:0.5rem; }
 .eco-names { display:flex; flex-direction:column; gap:0.28rem; }
-.eco-names span { font-size:1.23rem; color:rgba(255,255,255,0.85); cursor:default; transition:color 0.15s; line-height:1.4; }
+.eco-names span { font-size:1.23rem; color:#F6F4F0; cursor:default; transition:color 0.15s; line-height:1.4; }
 .eco-names span:hover { color:#fff; }
 .map-dot { opacity:0; transform-box:fill-box; transform-origin:center; transform:scale(0); transition:opacity 0.45s ease,transform 0.45s cubic-bezier(0.34,1.56,0.64,1); }
-.map-dot-live { fill:#d86b32; filter:drop-shadow(0 0 4px rgba(216,107,50,0.55)); }
-.map-dot-cross { fill:#c2fed1; filter:drop-shadow(0 0 3px rgba(194,254,209,0.5)); }
+.map-dot-live { fill:#FF8B31; filter:drop-shadow(0 0 4px rgba(255,139,49,0.55)); }
+.map-dot-cross { fill:#2EFF3F; filter:drop-shadow(0 0 3px rgba(46,255,63,0.5)); }
 .map-section.dots-visible .map-dot { opacity:1; transform:scale(1); }
 
 /* Map marker ambient pulse — independent, very subtle */
@@ -1063,12 +1063,12 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 }
 /* Glow pulse for live dots */
 @keyframes markerGlow {
-  0%, 100% { filter: drop-shadow(0 0 4px rgba(216,107,50,0.50)); }
-  50%       { filter: drop-shadow(0 0 9px rgba(216,107,50,0.78)); }
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(255,139,49,0.50)); }
+  50%       { filter: drop-shadow(0 0 9px rgba(255,139,49,0.78)); }
 }
 @keyframes markerGlowCross {
-  0%, 100% { filter: drop-shadow(0 0 3px rgba(194,254,209,0.40)); }
-  50%       { filter: drop-shadow(0 0 8px rgba(194,254,209,0.68)); }
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(46,255,63,0.40)); }
+  50%       { filter: drop-shadow(0 0 8px rgba(46,255,63,0.68)); }
 }
 .map-section.dots-visible .map-dot-live {
   animation: markerPulse 4s ease-in-out infinite, markerGlow 4s ease-in-out infinite;
@@ -1082,11 +1082,11 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 .hq-marker { transform-box: fill-box; transform-origin: center; }
 .hq-base-ring {
   fill: none;
-  stroke: rgba(255,255,255,0.75);
+  stroke: rgba(246,244,240,0.75);
   stroke-width: 1.4;
 }
 .hq-anchor {
-  fill: #ffffff;
+  fill: #F6F4F0;
   animation: hqAnchorPulse 4.8s ease-in-out infinite;
 }
 @keyframes hqAnchorPulse {
@@ -1095,7 +1095,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 }
 .hq-ripple {
   fill: none;
-  stroke: #ffffff;
+  stroke: #F6F4F0;
   stroke-width: 2.2;
   opacity: 0;
   transform: scale(0.3);
@@ -2002,12 +2002,12 @@ footer::before {
 <section class="map-section" id="map">
 
   <div class="map-text-col">
-    <h2 class="section-h2" style="color:#213123">Live and growing<br>across Europe.</h2>
-    <p class="section-sub" style="color:rgba(255,255,255,0.55);margin-bottom:2rem;">Eir provides licensed insurance infrastructure for distribution partners across multiple European markets.</p>
+    <h2 class="section-h2" style="color:#263C24">Live and growing<br>across Europe.</h2>
+    <p class="section-sub" style="color:#F6F4F0;margin-bottom:2rem;">Eir provides licensed insurance infrastructure for distribution partners across multiple European markets.</p>
 
     <div class="market-lists">
       <div class="market-group">
-        <h4 style="font-size:1.23rem;font-weight:500;letter-spacing:0.1em;color:#213123;">Live markets</h4>
+        <h4 style="font-size:1.23rem;font-weight:500;letter-spacing:0.1em;color:#263C24;">Live markets</h4>
         <ul>
           <li>Sweden · Denmark</li><li>Norway · Finland</li>
           <li>Germany · Greece</li><li>Spain · Netherlands</li>
@@ -2015,7 +2015,7 @@ footer::before {
         </ul>
       </div>
       <div class="market-group">
-        <h4 style="font-size:1.23rem;font-weight:500;letter-spacing:0.1em;color:#213123;">Cross-border license</h4>
+        <h4 style="font-size:1.23rem;font-weight:500;letter-spacing:0.1em;color:#263C24;">Cross-border license</h4>
         <ul>
           <li>Poland · Estonia</li><li>Cyprus · Latvia</li>
           <li>Croatia · Czechia</li><li>Lithuania · Slovakia</li>
@@ -2027,7 +2027,7 @@ footer::before {
     <div class="map-legend">
       <div class="legend-item"><div class="legend-dot live"></div> Live markets</div>
       <div class="legend-item"><div class="legend-dot cross"></div> Cross-border license</div>
-      <div class="legend-item"><div class="legend-dot hq" style="width:14px;height:14px;border:0.75px solid #fff;background:transparent;position:relative;"><span style="content:'';position:absolute;inset:3.5px;border-radius:50%;background:#fff;display:block;"></span></div> Head quarters, Stockholm</div>
+      <div class="legend-item"><div class="legend-dot hq" style="width:14px;height:14px;border:0.75px solid #F6F4F0;background:transparent;position:relative;"><span style="content:'';position:absolute;inset:3.5px;border-radius:50%;background:#F6F4F0;display:block;"></span></div> Head quarters, Stockholm</div>
     </div>
 
     <button class="map-eco-btn" onclick="toggleEcosystem()" id="ecoBtn" style="background:none;border:none;padding:0;justify-content:flex-start;">

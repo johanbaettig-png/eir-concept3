@@ -90,134 +90,31 @@ header.top .brand img { height: 24px; display: block; }
 /* ── PALETTE ROW ── */
 .prow {
   display: grid;
-  grid-template-columns: 260px 1fr 1.6fr;
-  gap: clamp(1.5rem,3vw,3rem);
+  grid-template-columns: 300px 1fr;
+  gap: clamp(2rem,4vw,4rem);
   padding: clamp(2.8rem,5vw,3.6rem) 0;
   border-bottom: 1px solid var(--border);
+  align-items: center;
 }
 .prow .pinfo { padding-top: 0.2rem; }
 .prow .ptitle { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--forest); margin-bottom: 1rem; }
-.prow .pdesc { font-size: 0.9rem; line-height: 1.65; color: rgba(28,28,28,0.55); max-width: 30ch; }
+.prow .pdesc { font-size: 0.9rem; line-height: 1.65; color: rgba(28,28,28,0.55); max-width: 34ch; }
 
-.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px,1fr)); grid-auto-rows: 1fr; gap: 0.9rem; }
+.swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,220px)); gap: 1.1rem; }
 .swatch {
   aspect-ratio: 4/5;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1rem 1.1rem;
+  padding: 1.1rem 1.2rem;
   position: relative;
   border: 1px solid rgba(0,0,0,0.06);
 }
-.swatch .name { font-family: 'DM Sans',sans-serif; font-weight: 500; font-size: 0.9rem; margin-bottom: 0.2rem; }
-.swatch .hex { font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.05em; opacity: 0.85; }
+.swatch .name { font-family: 'DM Sans',sans-serif; font-weight: 500; font-size: 0.98rem; margin-bottom: 0.25rem; }
+.swatch .hex { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.05em; opacity: 0.85; }
 .swatch.on-light .name, .swatch.on-light .hex { color: var(--ink); }
 .swatch.on-dark .name, .swatch.on-dark .hex { color: #fff; }
-
-.inuse-label { font-family: 'DM Mono', monospace; font-size: 0.64rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(28,28,28,0.4); margin-bottom: 1rem; }
-.inuse-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); grid-auto-rows: 1fr; gap: 0.9rem; }
-.mock-wrap { display: flex; flex-direction: column; }
-.mock {
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  aspect-ratio: 4/5;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0.85rem;
-}
-.mock .cap {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.56rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-align: center;
-  color: rgba(28,28,28,0.4);
-  margin-top: 0.6rem;
-}
-
-/* ── REAL SITE COMPONENTS, reused verbatim ── */
-.mini-logo { height: 14px; display: block; }
-.mini-logo.on-dark { filter: brightness(0) invert(1); }
-
-.btn-p {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.5rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  background: var(--orange);
-  color: #fff;
-  border: none;
-  padding: 0.75em 1.3em;
-  border-radius: 2rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  width: fit-content;
-}
-.btn-p .dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.65); flex-shrink: 0; }
-.btn-s {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.5rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  background: transparent;
-  color: rgba(255,255,255,0.75);
-  border: 1px solid rgba(255,255,255,0.3);
-  padding: 0.75em 1.3em;
-  border-radius: 2rem;
-  width: fit-content;
-}
-
-.m-hero {
-  background: conic-gradient(from 0deg at 38% 55%,#1E3A1C 0deg,#3C7A3E 40deg,#7FC77A 85deg,#4E8C4E 125deg,#12241A 175deg,#234A22 215deg,#FF7A29 250deg,#345C30 280deg,#5FA860 318deg,#1E3A1C 360deg);
-}
-.m-hero .headline { font-family:'DM Sans',sans-serif; font-weight:300; font-size:1.2rem; line-height:1.08; color:#fff; }
-
-.m-stat { background: var(--warm-white); border: 1px solid var(--border); justify-content:flex-end; }
-.m-stat .num { font-family:'DM Sans',sans-serif; font-weight:300; font-size:2.3rem; line-height:1; background:linear-gradient(160deg,var(--forest) 0%,var(--sage-soft) 55%,var(--orange) 100%); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:0.3rem; }
-.m-stat .lbl { font-family:'DM Mono',monospace; font-size:0.5rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(28,28,28,0.5); }
-
-.m-cta { background: var(--forest-black); justify-content:center; align-items:flex-start; gap:0.7rem; }
-
-.m-map { background: var(--sage-soft); }
-.m-map .t { font-family:'DM Sans',sans-serif; font-weight:300; font-size:1.05rem; color:var(--forest); line-height:1.1; }
-.m-map .dots { display:flex; gap:0.4rem; }
-.m-map .dot { width:8px; height:8px; border-radius:50%; }
-
-.m-card { background: linear-gradient(160deg,#0d1611 0%,#142218 100%); justify-content:flex-end; }
-.m-card .plate { background: rgba(8,14,10,0.6); border: 1px solid rgba(255,255,255,0.08); border-radius:10px; padding:0.7rem 0.8rem; display:flex; flex-direction:column; gap:0.25rem; }
-.m-card .t1 { font-family:'DM Sans',sans-serif; font-weight:300; font-size:0.85rem; color:#fff; }
-.m-card .t2 { font-family:'DM Sans',sans-serif; font-size:0.62rem; color:rgba(255,255,255,0.6); line-height:1.4; }
-
-.m-footer { background: var(--forest-black); justify-content:flex-start; gap:0.6rem; }
-.m-footer .flinks { display:flex; flex-direction:column; gap:0.3rem; }
-.m-footer .flinks span { font-family:'DM Mono',monospace; font-size:0.5rem; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.48); }
-
-.m-overlay { background: linear-gradient(to bottom, rgba(16,33,20,0) 0%, rgba(16,33,20,0.94) 100%), var(--dark); justify-content:flex-end; }
-.m-overlay .t { font-family:'DM Sans',sans-serif; font-weight:300; font-size:0.95rem; color:#fff; line-height:1.15; }
-
-.m-success { background:#fff; border:1px solid var(--border); justify-content:center; align-items:flex-start; gap:0.5rem; }
-.m-success .check { width:24px; height:24px; border-radius:50%; background:var(--pop-green); display:flex; align-items:center; justify-content:center; color:var(--forest-black); font-size:0.75rem; margin-bottom:0.2rem; }
-.m-success .t1 { font-family:'DM Sans',sans-serif; font-size:0.78rem; color:var(--ink); }
-.m-success .t2 { font-family:'DM Sans',sans-serif; font-size:0.6rem; color:rgba(28,28,28,0.5); }
-
-.m-ai { background: var(--forest-black); justify-content:center; align-items:center; }
-.m-ai .pill { display:flex; align-items:center; gap:0.4rem; background:rgba(46,255,63,0.12); border:1px solid rgba(46,255,63,0.4); color:var(--pop-green); font-family:'DM Mono',monospace; font-size:0.52rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.5em 0.85em; border-radius:2rem; }
-.m-ai .dot-anim { width:6px; height:6px; border-radius:50%; background:var(--pop-green); animation: pulseDot 1.4s ease-in-out infinite; }
-@keyframes pulseDot { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
-
-.m-status { background:#fff; border:1px solid var(--border); justify-content:center; align-items:flex-start; gap:0.5rem; }
-.m-status .row { display:flex; align-items:center; gap:0.5rem; }
-.m-status .dot { width:8px; height:8px; border-radius:50%; background:var(--pop-green); box-shadow:0 0 8px rgba(46,255,63,0.6); flex-shrink:0; }
-.m-status .t1 { font-family:'DM Sans',sans-serif; font-size:0.76rem; color:var(--ink); }
-.m-status .t2 { font-family:'DM Sans',sans-serif; font-size:0.58rem; color:rgba(28,28,28,0.45); }
-
-.m-toggle { background:#fff; border:1px solid var(--border); justify-content:center; align-items:center; }
-.m-toggle .switch { width:42px; height:23px; border-radius:2rem; background:var(--pop-green); position:relative; }
-.m-toggle .switch::after { content:''; position:absolute; top:3px; right:3px; width:17px; height:17px; border-radius:50%; background:#fff; }
 
 /* ── FUNCTIONAL ── */
 .func-list { list-style:none; margin-top:1.2rem; display:flex; flex-direction:column; gap:0.45rem; }
@@ -327,32 +224,6 @@ footer.bottom .meta span { font-family:'DM Mono',monospace; font-size:0.6rem; le
       <div class="swatch on-dark" style="background:#E86319;"><span class="name">Orange</span><span class="hex">#E86319</span></div>
       <div class="swatch on-light" style="background:#F6F4F0;"><span class="name">Warm White</span><span class="hex">#F6F4F0</span></div>
     </div>
-    <div>
-      <p class="inuse-label">In use</p>
-      <div class="inuse-grid">
-        <div class="mock-wrap">
-          <div class="mock m-hero">
-            <img class="mini-logo on-dark" src="images/img-003-b96b2324a598.webp" alt="Eir">
-            <span class="headline">Scalable<br>insurance<br>products</span>
-          </div>
-          <p class="cap">Hero &amp; backgrounds</p>
-        </div>
-        <div class="mock-wrap">
-          <div class="mock m-stat">
-            <span class="num">100%</span>
-            <span class="lbl">Renewal rate</span>
-          </div>
-          <p class="cap">Statistics &amp; highlights</p>
-        </div>
-        <div class="mock-wrap">
-          <div class="mock m-cta">
-            <a class="btn-p"><span class="dot"></span>Explore partnerships</a>
-            <a class="btn-s">See use cases →</a>
-          </div>
-          <p class="cap">Buttons &amp; CTA</p>
-        </div>
-      </div>
-    </div>
   </section>
 
   <!-- SUPPORTING PALETTE -->
@@ -366,37 +237,6 @@ footer.bottom .meta span { font-family:'DM Mono',monospace; font-size:0.6rem; le
       <div class="swatch on-light" style="background:#7AA572;"><span class="name">Sage Soft</span><span class="hex">#7AA572</span></div>
       <div class="swatch on-dark" style="background:#1A1F1A;"><span class="name">Dark</span><span class="hex">#1A1F1A</span></div>
       <div class="swatch on-dark" style="background:#102114;"><span class="name">Forest Black</span><span class="hex">#102114</span></div>
-    </div>
-    <div>
-      <p class="inuse-label">In use</p>
-      <div class="inuse-grid">
-        <div class="mock-wrap">
-          <div class="mock m-map">
-            <span class="t">Live and growing<br>across Europe</span>
-            <div class="dots"><span class="dot" style="background:#FF8B31;"></span><span class="dot" style="background:#2EFF3F;"></span></div>
-          </div>
-          <p class="cap">Sections &amp; illustrations</p>
-        </div>
-        <div class="mock-wrap">
-          <div class="mock m-card">
-            <div class="plate"><span class="t1">White label</span><span class="t2">Your brand.<br>Invisible infrastructure.</span></div>
-          </div>
-          <p class="cap">Cards &amp; surfaces</p>
-        </div>
-        <div class="mock-wrap">
-          <div class="mock m-footer">
-            <img class="mini-logo" src="images/img-003-b96b2324a598.webp" alt="Eir" style="margin-bottom:0.3rem;">
-            <div class="flinks"><span>About Eir</span><span>How we work</span><span>Press</span><span>Contact</span></div>
-          </div>
-          <p class="cap">Footer &amp; navigation</p>
-        </div>
-        <div class="mock-wrap">
-          <div class="mock m-overlay">
-            <span class="t">Built for partners who<br>want to move faster</span>
-          </div>
-          <p class="cap">Overlays &amp; text</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -414,38 +254,6 @@ footer.bottom .meta span { font-family:'DM Mono',monospace; font-size:0.6rem; le
     </div>
     <div class="swatches">
       <div class="swatch on-dark" style="background:#2EFF3F;"><span class="name" style="color:#102114;">Pop Green</span><span class="hex" style="color:#102114;">#2EFF3F</span></div>
-    </div>
-    <div>
-      <p class="inuse-label">In use</p>
-      <div class="inuse-grid">
-        <div class="mock-wrap">
-          <div class="mock m-success">
-            <span class="check">✓</span>
-            <span class="t1">Analysis complete</span>
-            <span class="t2">Your data has been processed successfully.</span>
-          </div>
-          <p class="cap">Success states</p>
-        </div>
-        <div class="mock-wrap">
-          <div class="mock m-ai">
-            <span class="pill"><span class="dot-anim"></span> AI insight</span>
-          </div>
-          <p class="cap">AI &amp; smart features</p>
-        </div>
-        <div class="mock-wrap">
-          <div class="mock m-status">
-            <div class="row"><span class="dot"></span><span class="t1">System operational</span></div>
-            <span class="t2">All systems running smoothly</span>
-          </div>
-          <p class="cap">Status indicators</p>
-        </div>
-        <div class="mock-wrap">
-          <div class="mock m-toggle">
-            <div class="switch"></div>
-          </div>
-          <p class="cap">Active states</p>
-        </div>
-      </div>
     </div>
   </section>
 

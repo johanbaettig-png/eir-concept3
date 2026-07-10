@@ -168,7 +168,7 @@ nav.nav-scrolled { background: rgba(14,26,18,0.92); backdrop-filter: blur(12px);
 }
 .hero-h1 {
   font-weight: 300;
-  font-size: clamp(2.99rem, 6.33vw, 5.29rem);
+  font-size: clamp(4.37rem, 9.78vw, 9.78rem);
   line-height: 0.94;
   letter-spacing: 0.01em;
   color: #fff;
@@ -529,7 +529,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
   position: relative;
   z-index: 2;
   padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem) 3rem;
-  max-width: 52ch;
+  max-width: 50vw;
 }
 
 /* Full-bleed photo + offer cards */
@@ -581,8 +581,8 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 .offer-card-v:hover { background: rgba(8,14,10,0.75); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08); }
 
 .offer-card-icon {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   margin-bottom: 2.8rem;
   color: #fff;
   opacity: 0.92;
@@ -590,7 +590,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 }
 .offer-card-v h3 {
   font-weight: 300;
-  font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+  font-size: clamp(1.3rem, 2.75vw, 2.3rem);
   letter-spacing: -0.01em;
   color: #fff;
   margin-bottom: 0.8rem;
@@ -1171,7 +1171,7 @@ section { padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,3rem); }
 }
 .press-card h3 {
   font-weight: 400;
-  font-size: clamp(2.6rem, 5.5vw, 4.6rem);
+  font-size: 0.84rem;
   line-height: 1.45;
   color: var(--ink);
   flex: 1;
@@ -1377,6 +1377,9 @@ footer::before {
 
 /* ── MOBILE ── */
 @media (max-width: 768px) {
+
+  /* Offer header — full width on small screens */
+  .offer-header { max-width: 100%; }
 
   /* Nav */
   .nav-links, .nav-cta { display: none; }
@@ -1922,7 +1925,7 @@ footer::before {
 
     <div class="offer-sub-row" style="transition-delay:0.25s">
       <div class="offer-sub-plate">
-        <p class="offer-sub-text offer-sub-text-anim" style="margin-bottom:0;">We handle licensing, risk, compliance and technology, so you can focus on your customers.</p>
+        <p class="offer-sub-text offer-sub-text-anim" style="margin-bottom:0;">We handle licensing, risk, compliance and technology, so you can focus<br>on your customers.</p>
         <a href="how-we-work.html#capabilities" class="btn-secondary offer-cta-anim" style="white-space:nowrap;flex-shrink:0;">Explore capabilities →</a>
       </div>
     </div>
